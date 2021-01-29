@@ -1,0 +1,8 @@
+{
+	"files.associations": {
+		"ft_error.C": "cpp",
+		"ft_isspace.C": "cpp",
+		"__locale": "cpp",
+		"cmath": "c"
+	}
+}

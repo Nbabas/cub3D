@@ -1,0 +1,63 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2021/01/15 10:16:47 by nbascaul          #+#    #+#              #
+#    Updated: 2021/01/18 12:14:11 by nbascaul         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+NAME = cub3D
+
+MLX_DIR = mlx
+MLX = libmlx.dylib
+
+CC = clang
+CFLAGS = -Wall -Wextra -Werror -g
+
+SRCS = srcs/cub3d.c \
+		srcs/utils.c \
+		srcs/parsing.c \
+		srcs/get_next_line.c \
+		srcs/ft_error.c \
+		srcs/parse_config.c \
+		srcs/parse_map.c \
+		srcs/init.c \
+
+#MLX = -lmlx -lm -framework OpenGL -framework AppKit
+
+OBJSRCS = $(SRCS:.c=.o)
+OBJSRCSBONUS = $(SRCS_BONUS:.c=.o)
+
+
+$(NAME) : $(OBJSRCS) $(OBJSRCSBONUS)
+
+
+$(TEST) : $(OBJSRCS)
+
+all : $(NAME)
+	@gcc -o $(NAME) $(OBJSRCSBONUS) $(CFLAGS) ./libft/libft.a -L $(MLX_DIR) -l mlx
+	@install_name_tool -change $(MLX) @loader_path/$(MLX_DIR)/$(MLX) $(NAME)
+		#@gcc $(OBJSRCSBONUS) $(OBJSRCS) -Wall -Wextra -Werror  ./libft/libft.a -o $(NAME)
+
+sanitize : $(NAME)
+		@gcc $(OBJSRCSBONUS) $(OBJSRCS) -Wall -Wextra -Werror  ./libft/libft.a -o $(NAME) -fsanitize=address
+
+lib :
+	$(MAKE) -C ./libft
+
+clean :
+	rm -rf $(OBJSRCS) $(OBJSRCSBONUS)
+	$(MAKE) clean -C ./libft
+
+fclean : clean
+
+	rm -rf $(NAME)
+	rm -rf cub3d.bmp
+
+re : fclean all
+
+bonus : $(NAME)
