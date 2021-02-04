@@ -6,21 +6,20 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 10:12:56 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/01/20 17:13:52 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/03 13:06:01 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../inc/cub3d.h"
 
-int			line_is_space(char *line)
+int		line_is_space(char *line)
 {
-	while(ft_isspace(*line))
+	while (ft_isspace(*line))
 		line++;
 	if (*line == '\n' || *line == '\0')
 		return (SUCCESS);
 	else
 		return (ERROR);
-
 }
 
 void	ft_free(char *tofree)
@@ -32,10 +31,10 @@ void	ft_free(char *tofree)
 	}
 }
 
-int			ft_wordcount(char const *str, char c)
+int		ft_wordcount(char const *str, char c)
 {
-	int				i;
-	int				cmp;
+	int		i;
+	int		cmp;
 
 	cmp = 0;
 	i = 0;
@@ -50,7 +49,6 @@ int			ft_wordcount(char const *str, char c)
 	}
 	return (cmp);
 }
-
 
 void	free_tab(char **tab, char const *s, char sep, int n)
 {
@@ -67,4 +65,3 @@ void	free_tab(char **tab, char const *s, char sep, int n)
 	if (tab)
 		free(tab);
 }
-

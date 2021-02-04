@@ -1,16 +1,17 @@
-R 600 600
-NO ./textures/NO.xpm
-SO ./textures/silex.xpm
-WE ./textures/silex.xpm
+R 1200 600
+NO ./textures/meuf.xpm
+SO ./textures/SO.xpm
+WE ./textures/meuf.xpm
 EA ./textures/silex.xpm
-S ./textures/coeur.xpm
+S1 ./textures/tonneau.xpm
+S2 ./textures/coeur.xpm
 
 F 181,181,181
 C 135,206,250
 
 1111111111111111111
-100E0000020000000010
-1002000000001000001
-1000000000001000001
-1000000000001000001
+100E000002000000013
+1000000200001000001
+1000000000201000001
+1000000000201000001
 1111111111111111111

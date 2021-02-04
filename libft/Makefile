@@ -6,7 +6,7 @@
 #    By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/09 16:09:34 by nbascaul          #+#    #+#              #
-#    Updated: 2021/01/17 00:52:50 by nbascaul         ###   ########.fr        #
+#    Updated: 2021/02/03 12:29:27 by nbascaul         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,6 +80,7 @@ SRC =	ft_printf/ft_printf.c \
 		ft_lstclear.c		\
 		ft_lstiter.c		\
 		ft_lstmap.c		\
+		get_next_line.c \
 
 OBJ		= $(SRC:.c=.o)
 CC		= gcc

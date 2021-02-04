@@ -246,7 +246,7 @@ static char *pngegg[] = {
 "VX c #D1D9EC",
 "CX c #DDE4F3",
 "ZX c #C2BCBC",
-"AX c None",
+"AX c 0",
 "SX c black",
 "DX c #80787E",
 /* pixels */

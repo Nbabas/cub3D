@@ -255,7 +255,7 @@ static char *meuf[] = {
 "JX c #EBC4AA",
 "KX c #F8E7F2",
 "LX c #E3AECB",
-"PX c None",
+"PX c 0",
 "IX c black",
 "UX c #69868E",
 /* pixels */

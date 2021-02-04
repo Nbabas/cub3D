@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_all.c                                         :+:      :+:    :+:   */
+/*   init.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/19 11:38:07 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/03 15:33:06 by nbascaul         ###   ########.fr       */
+/*   Created: 2021/02/03 17:28:01 by nbascaul          #+#    #+#             */
+/*   Updated: 2021/02/03 17:52:16 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/cub3d.h"
+#ifndef INIT_H
+# define INIT_H
 
-void	free_all(t_data *d)
-{
-	if (d->map)
-		free_tab(d->map, "", 0, d->ymax);
-	if (d->sprites)
-		free(d->sprites);
-	if (d->sprites)
-		free(d->buff);
-	if (d)
-		free(d);
-	if (g_mlx_win)
-		mlx_destroy_window(g_mlx_ptr, g_mlx_win);
-}
+# if defined(__linux__)
+#  define PLATFORM 3
+# elif defined(__unix__) || !defined(__APPLE__) && defined(__MACH__)
+#  include <sys/param.h>
+#  if defined(BSD)
+#   define PLATFORM 2
+#  endif
+# elif defined(__APPLE__) && defined(__MACH__)
+#  define PLATFORM 1
+# endif
+#endif

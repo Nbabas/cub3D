@@ -8,27 +8,28 @@ MLX = mlxopengl
 
 LXFLAGS = -lmlx -framework OpenGL -framework AppKit -lm
 
-HEADER = cub3d.h
-
-B_HEADER = cub3d_bonus.h
 
 SRC = cub3d\
-		utils \
-		parsing \
-		get_next_line \
-		ft_error \
-		parse_config \
-		process_map \
+		/player/init_player \
+		/player/movements \
+		/player/keys \
+		/config/checks \
+		/config/parsing \
+		/config/parse_config \
+		/config/process_map \
+		/raycast/draw_col \
+		/raycast/raycasting \
+		/raycast/trace_horizontal \
+		/raycast/trace_vertical \
+		/raycast/sprites \
+		/raycast/sprites_tools \
+		/raycast/images_textures \
 		init \
-		raycasting \
-		sprites \
 		minimap \
 		free_all \
-		checks \
-		keys \
-		movements \
-		trace_horizontal \
-		trace_vertical \
+		ft_error \
+		utils \
+		bmpsaver \
 
 FIL = $(addsuffix .c, $(addprefix srcs/, $(SRC)))
 
@@ -36,40 +37,28 @@ OBJ = $(FIL:.c=.o)
 
 BIN = $(addsuffix .o, $(SRC))
 
-B_HEADER = cub3d_bonus.h
-
-B_SRC = cub3d.c \
-		utils.c \
-		parsing.c \
-		get_next_line.c \
-		ft_error.c \
-		parse_config.c \
-		parse_map.c \
-		init.c \
-
-B_FIL = $(addsuffix _bonus.c, $(addprefix bonus/, $(SRC) $(B_SRC)))
-
-B_OBJ = $(B_FIL:.c=.o)
-
-B_BIN = $(addsuffix _bonus.o, $(SRC) $(B_SRC))
-
-.PHONY: all clean fclean re bonus test sqr bmp err inv norm
+.PHONY: all clean fclean re
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@echo "\n\033[0;33mCompiling..."
+	@echo "\n\033[0;33mCompiling libft..."
+	@make -C ./libft
+	@make -C ./mlxopengl
+	@echo "\n\x1b[34mCompiling program..."
 	$(CC) -o $(NAME) ./libft/libft.a -L $(MLX) $(LXFLAGS) $(OBJ) -fsanitize=address
 	@echo "\033[0m"
 
 clean:
-	@echo "\033[0;31mCleaning..."
+	@echo "\033[0;31mClean..."
+	@make clean -C ./libft
+	@make clean -C ./mlxopengl
 	rm -rf $(OBJ) $(B_OBJ)
-	rm -f bitmap.bmp
+	rm -f img_saved.bmp
 	@echo "\033[0m"
 
 fclean: clean
-	@echo "\033[0;31mRemoving executable..."
+	@echo "\033[0;31mDelete program..."
 	rm -f $(NAME)
 	@echo "\033[0m"
 

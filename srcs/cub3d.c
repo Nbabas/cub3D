@@ -6,11 +6,11 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 09:14:16 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/01/28 17:09:46 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/03 18:11:09 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../inc/cub3d.h"
 
 static int	check_open_map(char *file, t_data *d)
 {
@@ -21,35 +21,67 @@ static int	check_open_map(char *file, t_data *d)
 		return (FD_ERROR);
 	return (SUCCESS);
 }
+/*
+**int		h;
+**int		w;
+**mlx_get_screen_size(g_mlx_ptr, &w, &h);
+**	if (g_h_resolution > h)
+**	g_h_resolution = h;
+**if (g_w_resolution > w)
+**	g_w_resolution = w;
+*/
 
-int main(int argc, char *argv[])
+static void	create_window(t_data *d)
 {
-	t_data *d;
-	(void) argc;
+	g_h_resolution = d->h_resolution;
+	g_w_resolution = d->w_resolution;
+	g_mlx_win = mlx_new_window(
+				g_mlx_ptr, g_w_resolution, g_h_resolution, "That's my boy");
+	if (!g_mlx_win)
+		ft_error(d, MLX_ERROR, "Failed to create window");
+}
 
-	d = malloc(sizeof(t_data));
-	if (!d)
-		ft_error(d,MALLOC_ERROR, "");
-	ft_init(d);
-	if ((d->err = check_open_map(argv[1], d)) < 0)
-		ft_error(d, CONFIG_ERROR, argv[1]);
-
-	g_mlx_ptr = mlx_init();
-
-	parsing(d, argv[1]);
-
+void		game(t_data *d, char *pathmap)
+{
+	if ((g_mlx_ptr = mlx_init()) == 0)
+		ft_error(d, MLX_ERROR, "MLX init abort");
+	g_mini_scale = 0.20;
+	parsing(d, pathmap);
 	check_map(d);
-	g_mlx_win = mlx_new_window(g_mlx_ptr, d->w_resolution, d->h_resolution, "C'est mon CUBE");
-
+	create_window(d);
 	ft_init_global(d);
 	ft_init_player(d);
 	ft_init_sprites(d);
 	raycast_process(d);
-
-//printf("infos : %s\n", map->infos[0]);
 	listen_actions(d);
+	free_all(d);
+}
 
-	destroy(d);
-//	system("leaks cub3D");
-	return (SUCCESS);
+static void	check_input(t_data *d, int argc, char **argv)
+{
+	if (argc == 3)
+	{
+		if (ft_strcmp(argv[2], "--save") != 0)
+			ft_error(d, INPUT_ERROR, "Start : ./cub3D [path_map] [--save]");
+		else
+			d->bmp = 1;
+	}
+	else if (argc != 2)
+		ft_error(d, INPUT_ERROR, "Start : ./cub3D [path_map] [--save]");
+	if ((d->err = check_open_map(argv[1], d)) < 0)
+		ft_error(d, CONFIG_ERROR, argv[1]);
+}
+
+int			main(int argc, char *argv[])
+{
+	t_data	*d;
+
+	printf("%d\n", PLATFORM);
+	d = malloc(sizeof(t_data));
+	if (!d)
+		ft_error(d, MALLOC_ERROR, "");
+	ft_init(d);
+	check_input(d, argc, argv);
+	game(d, argv[1]);
+	return (0);
 }
