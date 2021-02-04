@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 09:14:11 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/03 17:39:03 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/04 11:40:24 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include "global.h"
 # include "init.h"
 
+# include <limits.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
