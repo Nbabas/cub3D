@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 09:14:11 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/04 17:53:32 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/05 15:37:10 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 #  define BUFFER_SIZE 512
 # endif
 
-# define ERROR 0
+# define ERROR -1
 # define MAP_ERROR -2
 # define SCREEN_SIZE_ERROR -3
 # define FD_ERROR -4
@@ -153,6 +153,7 @@ typedef struct	s_data
 	t_game		g;
 	float		*buff;
 	int			bmp;
+	int			minimap;
 }				t_data;
 
 void			ft_init(t_data *d);
@@ -218,4 +219,10 @@ void			ft_free(char *tofree);
 void			free_tab(char **tab, char const *s, char sep, int n);
 void			free_all(t_data *d);
 void			bmp_saver(t_data *d);
+
+/*
+** print_strings.c
+*/
+
+void			check_strings(t_data *d);
 #endif

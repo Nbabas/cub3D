@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 09:14:16 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/05 10:58:39 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/05 15:51:48 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void		game(t_data *d, char *pathmap)
 	ft_init_player(d);
 	ft_init_sprites(d);
 	raycast_process(d);
+	listen_actions(d);
 }
 
 static void	check_input(t_data *d, int argc, char **argv)

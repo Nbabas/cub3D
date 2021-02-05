@@ -6,14 +6,39 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 15:11:00 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/05 10:31:03 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/05 17:03:31 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
 
+int	next_key_pressed(int keycode, t_data *d)
+{
+	if (keycode == SPACE_BAR)
+	{
+		printf("%f\n", floor(g_mini_scale * 10));
+		if (floor(g_mini_scale * 10) == 2)
+			g_mini_scale = 0.8;
+		else
+			g_mini_scale = .2;
+	}
+	else if (keycode == TAB)
+	{
+		if (PLATFORM == 1)
+			system("afplay ./textures/beh.mp3 -t 1 &");
+		else if (PLATFORM == 2)
+			system("mpg123 ./textures/beh.mp3 &");
+	}
+	else if (keycode == MAJ)
+		d->p.speed *= 2;
+	else if (keycode == ESC)
+		ft_exit(d);
+	return (SUCCESS);
+}
+
 int	key_pressed(int keycode, t_data *d)
 {
+	printf("keycode : %i\n", keycode);
 	if (keycode == UP_ARROW || keycode == W)
 		d->p.walk_dir = 1;
 	else if (keycode == DOWN_ARROW || keycode == S)
@@ -26,22 +51,7 @@ int	key_pressed(int keycode, t_data *d)
 		d->p.leftstep = 1;
 	else if (keycode == D)
 		d->p.rightstep = 1;
-	else if (keycode == SPACE_BAR)
-	{
-		if ((int)g_mini_scale == 0)
-			g_mini_scale = 1.0;
-		else
-			g_mini_scale = .2;
-	}
-	else if (keycode == TAB)
-	{
-		if (PLATFORM == 1)
-			system("afplay ./textures/beh.mp3 -t 1 &");
-		else if (PLATFORM == 2)
-			system("mpg123 ./textures/beh.mp3 &");
-	}
-	else if (keycode == ESC)
-		ft_exit(d);
+	next_key_pressed(keycode, d);
 	return (SUCCESS);
 }
 
@@ -59,6 +69,8 @@ int	key_released(int keycode, t_data *d)
 		d->p.leftstep = 0;
 	else if (keycode == D)
 		d->p.rightstep = 0;
+	else if (keycode == MAJ)
+		d->p.speed /= 2;
 	return (SUCCESS);
 }
 

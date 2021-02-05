@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 17:28:01 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/04 17:54:03 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/05 17:02:54 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@
 #  define RIGHT_ARROW 124
 #  define TAB 48
 #  define SPACE_BAR 49
+#  define MAJ 257
 # elif PLATFORM == 2
 #  include "../minilibx-linux/mlx.h"
 #  define ESC 65307

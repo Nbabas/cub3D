@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 13:24:06 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/03 17:08:41 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/05 15:58:42 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	sort_sprites(t_data *d)
 	}
 }
 
-float	calcul_angle(t_data *d, float x, float y)
+/* float	calcul_angle(t_data *d, float x, float y)
 {
 	float	vx;
 	float	vy;
@@ -113,4 +113,4 @@ int		is_visible(t_data *d, int i)
 	if (angle_a < fov)
 		return (1);
 	return (0);
-}
+} */

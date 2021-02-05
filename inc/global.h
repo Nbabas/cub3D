@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 09:38:24 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/05 13:34:32 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/05 17:05:38 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 /*
 **# define MINI_SCALE 0.20
 */
-# define P_SPEED 8
-# define R_SPEED 8
+# define P_SPEED 3
+# define R_SPEED 5
 # define SCREEN_MAX_WIDTH 1920
 # define SCREEN_MAX_HEIGHT 1080
 

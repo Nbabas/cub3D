@@ -38,6 +38,7 @@ SRC = 	cub3d \
 		tools/ft_error \
 		tools/utils \
 		tools/bmpsaver \
+		tools/print_string \
 
 FIL = $(addsuffix .c, $(addprefix srcs/, $(SRC)))
 

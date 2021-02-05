@@ -1,4 +1,4 @@
-R 800   	600
+R 180 180
 NO ./textures/b2.xpm
 
 SO ./textures/b2.xpm

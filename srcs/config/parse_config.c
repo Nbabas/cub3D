@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 16:57:59 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/04 16:58:45 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/05 17:09:59 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ static int	check_screen(t_data *d)
 {
 	d->w_resolution = ft_atoi(d->infos[1]);
 	d->h_resolution = ft_atoi(d->infos[2]);
-	if (d->w_resolution <= 0 || d->h_resolution <= 0)
+	if (d->w_resolution < 200 || d->h_resolution < 200)
 		return (SCREEN_SIZE_ERROR);
 	if (d->w_resolution > SCREEN_MAX_HEIGHT)
 		d->w_resolution = SCREEN_MAX_HEIGHT;
@@ -99,7 +99,7 @@ void		parse_config(t_data *d)
 	if (strcmp(d->infos[0], "R") == 0 && words == 3)
 	{
 		if ((d->err = check_screen(d)) < 0)
-			ft_error(d, CONFIG_ERROR, "");
+			ft_error(d, CONFIG_ERROR, "- at least 200x200");
 	}
 	else if (ft_strchr("NSEW", d->infos[0][0]) && words == 2)
 	{
@@ -114,5 +114,5 @@ void		parse_config(t_data *d)
 	else
 		ft_error(d, CONFIG_ERROR, d->infos[0]);
 	free_tab(d->infos, d->line, ' ', 0);
-	
+
 }

@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 08:38:29 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/05 13:27:04 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/05 15:55:13 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,6 @@ static void	draw_img(t_data *d)
 
 int			raycast_process(t_data *d)
 {
-	char str[10];
-
 	create_image(d);
 	p_moves(d);
 	draw_background(d);
@@ -89,16 +87,7 @@ int			raycast_process(t_data *d)
 	if (d->bmp == 1)
 		bmp_saver(d);
 	mlx_put_image_to_window(g_mlx_ptr, g_mlx_win, g_img_ptr, 0, 0);
-
-	if (d->g.tocollect > 0)
-	{
-		str[0] = d->g.collected + '0';
-		str[1] = '/';
-		str[2] = d->g.tocollect + '0';
-		str[3] = 0;
-		mlx_string_put(g_mlx_ptr, g_mlx_win, g_w_resolution - 50,
-						g_h_resolution - 20, 0x000000, str);
-	}
+	check_strings(d);
 	if (PLATFORM == 2)
 		mlx_destroy_image(g_mlx_ptr, g_img_ptr);
 	else
@@ -108,6 +97,5 @@ int			raycast_process(t_data *d)
 		free(g_img_addr);
 		g_img_addr = 0;
 	}
-	listen_actions(d);
 	return (SUCCESS);
 }

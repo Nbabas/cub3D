@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/27 12:36:10 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/05 13:58:11 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/05 16:10:11 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ int			is_wall(float y, float x, t_data *d)
 	int		mapx;
 	int		mapy;
 
+	if (x < 0 || x > (g_n_col * g_tile_size) ||
+		y < 0 || y > (g_n_rows * g_tile_size ))
+		return (1);
 	mapx = floor(x / g_tile_size);
 	mapy = floor(y / g_tile_size);
-	if (x < 0 || x > g_w_resolution ||
-		y < 0 || y > g_h_resolution)
-		return (1);
 	if (d->map[mapy][mapx] == '1')
 		return (1);
 	return (0);

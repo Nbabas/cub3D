@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/16 19:27:25 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/04 17:26:02 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/05 15:52:47 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,22 @@ void		ft_init_sprites(t_data *d)
 		ft_error(d, MALLOC_ERROR, "");
 	ft_bzero(d->buff, sizeof(float) * g_w_resolution);
 	get_sprites(d);
+}
+
+void		ft_next_init(t_data *d)
+{
+	d->nb_spr = 0;
+	d->sprites = NULL;
+	d->t[0].img = NULL;
+	d->t[1].img = NULL;
+	d->t[2].img = NULL;
+	d->t[3].img = NULL;
+	d->t[4].img = NULL;
+	d->t[5].img = NULL;
+	d->g.collected = 0;
+	d->g.tocollect = 0;
+	d->bmp = 0;
+	d->minimap = 1;
 }
 
 void		ft_init(t_data *d)
@@ -37,17 +53,7 @@ void		ft_init(t_data *d)
 	d->por = '?';
 	d->px = 0;
 	d->py = 0;
-	d->nb_spr = 0;
-	d->sprites = NULL;
-	d->t[0].img = NULL;
-	d->t[1].img = NULL;
-	d->t[2].img = NULL;
-	d->t[3].img = NULL;
-	d->t[4].img = NULL;
-	d->t[5].img = NULL;
-	d->g.collected = 0;
-	d->g.tocollect = 0;
-	d->bmp = 0;
+	ft_next_init(d);
 }
 
 void		ft_init_global(t_data *d)
