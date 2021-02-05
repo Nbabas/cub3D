@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 11:17:15 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/05 11:12:14 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/05 11:21:59 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int			ft_exit(t_data *d)
 {
 
 	free_all(d);
-	system("leaks cub3D");
+	//system("leaks cub3D");
 	exit(0);
 }
 
