@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 08:38:29 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/05 11:08:51 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/05 13:27:04 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,14 +61,15 @@ static void	draw_img(t_data *d)
 		trace_horizontal(&d->r, d);
 		trace_vertical(&d->r, d);
 		draw_column(&d->r, d, &d->w);
-	/*
-	**printf("P.angle = %f || n° : %i || r.angle = %f ||", d->p.r_angle, r->i, r->angle);
-	**printf("Hit x  = %f || Hit y = %f || Distance = %f || Hit Vertical = %i || ", r->hitx, r->hity, r->distance, r->hitvert);
-	**r->faceup ? printf("Look UP "):0;
-	**r->facedown ? printf("Look DOWN "):0;
-	**r->faceright ? printf("& RIGHT\n"):0;
-	**r->faceleft ? printf("& LEFT\n"):0;
-	*/
+
+/* 	printf("g tile : %i \n", g_tile_size);
+	printf("\nPxy %f:%f P.angle = %f || n° : %i || r.angle = %f ||",d->p.x,d->p.y, d->p.r_angle, d->r.i, d->r.angle);
+	printf("Hit x  = %f || Hit y = %f || Distance = %f || Hit Vertical = %i || ", d->r.hitx, d->r.hity, d->r.distance, d->r.hitvert);
+	d->r.faceup ? printf("Look UP "):0;
+	d->r.facedown ? printf("Look DOWN "):0;
+	d->r.faceright ? printf("& RIGHT\n"):0;
+	d->r.faceleft ? printf("& LEFT\n"):0; */
+
 		d->r.angle += (g_fov_angle / g_n_rays);
 		d->r.i++;
 	}
@@ -88,6 +89,7 @@ int			raycast_process(t_data *d)
 	if (d->bmp == 1)
 		bmp_saver(d);
 	mlx_put_image_to_window(g_mlx_ptr, g_mlx_win, g_img_ptr, 0, 0);
+
 	if (d->g.tocollect > 0)
 	{
 		str[0] = d->g.collected + '0';

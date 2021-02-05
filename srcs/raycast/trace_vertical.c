@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/27 13:09:25 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/03 17:06:19 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/05 13:56:01 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static void	trace_vertical_next(t_ray *r, t_data *d)
 {
-	while (r->xa >= 0 && r->xa <= g_w_resolution &&
-			r->ya >= 0 && r->ya <= g_h_resolution)
+	while (r->xa >= 0 && r->xa <= d->xmax * g_tile_size &&
+			r->ya >= 0 && r->ya <= d->ymax * g_tile_size)
 	{
 		if (is_wall(d->r.ya, d->r.xa - r->faceleft, d))
 		{
