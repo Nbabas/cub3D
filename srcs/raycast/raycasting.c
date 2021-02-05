@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 08:38:29 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/04 11:42:15 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/05 11:08:51 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,15 @@ int			raycast_process(t_data *d)
 		mlx_string_put(g_mlx_ptr, g_mlx_win, g_w_resolution - 50,
 						g_h_resolution - 20, 0x000000, str);
 	}
-	free(g_img_ptr);
-	free(g_img_addr);
+	if (PLATFORM == 2)
+		mlx_destroy_image(g_mlx_ptr, g_img_ptr);
+	else
+	{
+		free(g_img_ptr);
+		g_img_addr = 0;
+		free(g_img_addr);
+		g_img_addr = 0;
+	}
+	listen_actions(d);
 	return (SUCCESS);
 }

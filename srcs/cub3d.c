@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 09:14:16 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/03 18:11:09 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/05 10:58:39 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ static void	create_window(t_data *d)
 {
 	g_h_resolution = d->h_resolution;
 	g_w_resolution = d->w_resolution;
+	if (d->bmp == 1)
+		return ;
 	g_mlx_win = mlx_new_window(
 				g_mlx_ptr, g_w_resolution, g_h_resolution, "That's my boy");
 	if (!g_mlx_win)
@@ -53,8 +55,6 @@ void		game(t_data *d, char *pathmap)
 	ft_init_player(d);
 	ft_init_sprites(d);
 	raycast_process(d);
-	listen_actions(d);
-	free_all(d);
 }
 
 static void	check_input(t_data *d, int argc, char **argv)
@@ -76,7 +76,6 @@ int			main(int argc, char *argv[])
 {
 	t_data	*d;
 
-	printf("%d\n", PLATFORM);
 	d = malloc(sizeof(t_data));
 	if (!d)
 		ft_error(d, MALLOC_ERROR, "");

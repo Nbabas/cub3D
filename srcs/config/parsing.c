@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 09:50:19 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/03 12:19:35 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/05 10:36:00 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,8 @@ static void	parse_file(t_data *d)
 void		parsing(t_data *d, char *file)
 {
 	static int ret;
-
+	char *ptr;
+	ptr = d->line;
 	d->line = 0;
 	ret = 1;
 	(void)file;
@@ -76,7 +77,7 @@ void		parsing(t_data *d, char *file)
 		}
 		else
 			parse_file(d);
-		ft_free(d->line);
+		free(d->line);
 	}
 	close(d->fd);
 	process_map(d, file);

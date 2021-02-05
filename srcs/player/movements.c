@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 16:18:47 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/03 18:45:30 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/04 17:34:18 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,15 +77,15 @@ void		p_moves(t_data *d)
 	update_player(d, step, 'y');
 	if (d->p.rightstep == 1 && d->p.leftstep == 0)
 	{
-		d->p.x = d->p.x + d->p.ydir * d->p.speed;
-		d->p.y = d->p.y - d->p.xdir * d->p.speed;
-		update_player(d, step, 'r');
-	}
-	else if (d->p.leftstep == 1 && d->p.rightstep == 0)
-	{
 		d->p.x = d->p.x - d->p.ydir * d->p.speed;
 		d->p.y = d->p.y + d->p.xdir * d->p.speed;
 		update_player(d, step, 'l');
+	}
+	else if (d->p.leftstep == 1 && d->p.rightstep == 0)
+	{
+		d->p.x = d->p.x + d->p.ydir * d->p.speed;
+		d->p.y = d->p.y - d->p.xdir * d->p.speed;
+		update_player(d, step, 'r');
 	}
 	update_var_angle(d);
 }

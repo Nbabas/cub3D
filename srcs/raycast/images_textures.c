@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 18:50:36 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/03 12:19:47 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/04 17:04:56 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,20 +29,18 @@ void		create_image(t_data *d)
 
 int			*get_textures_img(t_data *d, int id)
 {
-	void	*img;
 	int		tab[3];
 	int		*ret;
 
-	img = mlx_xpm_file_to_image(g_mlx_ptr, d->infos[1],
+	d->t[id].img = mlx_xpm_file_to_image(g_mlx_ptr, d->infos[1],
 								&d->t[id].w, &d->t[id].h);
-	if (!img)
+	if (!d->t[id].img)
 	{
 		d->err = TEXTURES_ERROR;
 		ft_error(d, MLX_ERROR, d->infos[1]);
 	}
-	ret = (int *)mlx_get_data_addr(img, &tab[0], &tab[1], &tab[2]);
+	ret = (int *)mlx_get_data_addr(d->t[id].img, &tab[0], &tab[1], &tab[2]);
 	if (!ret)
 		ft_error(d, MLX_ERROR, "Impossible to get img address");
-	ft_free(img);
 	return (ret);
 }

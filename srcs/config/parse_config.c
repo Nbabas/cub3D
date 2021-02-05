@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 16:57:59 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/03 17:12:47 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/04 16:58:45 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,12 +101,12 @@ void		parse_config(t_data *d)
 		if ((d->err = check_screen(d)) < 0)
 			ft_error(d, CONFIG_ERROR, "");
 	}
-	else if (ft_strchr("NSEW", d->infos[0][0]) && !(d->infos[0][3]))
+	else if (ft_strchr("NSEW", d->infos[0][0]) && words == 2)
 	{
 		if ((d->err = check_textures(d, words)) < 0)
 			ft_error(d, CONFIG_ERROR, d->infos[1]);
 	}
-	else if (ft_strchr("CF", d->infos[0][0]) && !(d->infos[0][1]))
+	else if (ft_strchr("CF", d->infos[0][0]) && words == 2)
 	{
 		if ((d->err = check_colors(d)) < 0)
 			ft_error(d, CONFIG_ERROR, d->infos[0]);
@@ -114,4 +114,5 @@ void		parse_config(t_data *d)
 	else
 		ft_error(d, CONFIG_ERROR, d->infos[0]);
 	free_tab(d->infos, d->line, ' ', 0);
+	
 }

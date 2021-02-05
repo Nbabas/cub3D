@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 14:25:43 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/03 17:08:41 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/04 17:30:17 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	draw_textures_sprite(t_spr *spr, int x, int y, t_data *d)
 		(int)sizeof(d->t[spr->type + 2].addr))
 		return ;
 	color = d->t[spr->type + 2].addr[texty * d->t[spr->type + 2].w + textx];
-	if (color != 0x000000)
+	if (color != -16777216 && color != 0)
 		g_img_addr[(y) * g_w_resolution + x] = color;
 }
 

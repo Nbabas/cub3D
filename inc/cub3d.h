@@ -6,28 +6,26 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 09:14:11 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/04 11:40:24 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/04 17:53:32 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include "../mlx/mlx.h"
 # include "../libft/libft.h"
-# include "global.h"
 # include "init.h"
+# include "global.h"
 
 # include <limits.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-
 # include <fcntl.h>
 # include <math.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 64
+#  define BUFFER_SIZE 512
 # endif
 
 # define ERROR 0
@@ -108,6 +106,7 @@ typedef struct	s_p
 
 typedef struct	s_textures
 {
+	void		*img;
 	int			*addr;
 	int			h;
 	int			w;

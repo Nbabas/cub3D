@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/08 03:57:17 by bfleury           #+#    #+#             */
-/*   Updated: 2021/01/15 12:02:12 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/04 14:16:46 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,22 @@ static int		ft_wordlen(char *str)
 
 static int		ft_nbword(char *str)
 {
-	int		i;
-	int		result;
 
+	int				i;
+	int				cmp;
+
+	cmp = 0;
 	i = 0;
-	result = 0;
-	while (str[i++])
-		if ((str[i - 1] != ' ' && str[i - 1] != '\t' && str[i - 1] != '\n'
-			&& str[i - 1] != '\0')
-		&& ((str[i - 2] == ' ' || str[i - 2] == '\t' || str[i - 2] == '\n')
-			|| i == 1))
-			result++;
-	return (result);
+	while (str[i] != '\0')
+	{
+		while (str[i] && (str[i] == '\t' || str[i] == ' '))
+			i++;
+		if (str[i] && (str[i] != '\t' && str[i] != ' '))
+			cmp++;
+		while (str[i] && (str[i] != '\t' && str[i] != ' '))
+			i++;
+	}
+	return (cmp);
 }
 
 char			**ft_split_whitespaces(char *str)
@@ -43,13 +47,13 @@ char			**ft_split_whitespaces(char *str)
 	int		i;
 	char	*tmp;
 	char	**result;
-
+	
 	while (*str == ' ' || *str == '\t' || *str == '\n')
 		str++;
 	if (!(result = (char**)malloc((sizeof(char*) * ft_nbword(str)) + 1)))
 		return (NULL);
 	i = 0;
-	while (ft_nbword(str))
+	while (ft_nbword(str) != 0 && *str)
 	{
 		while (*str == ' ' || *str == '\t' || *str == '\n')
 			str++;
@@ -60,6 +64,6 @@ char			**ft_split_whitespaces(char *str)
 		result[i++] = tmp;
 		str += ft_wordlen(str);
 	}
-	result[i] = 0;
+	result[i] = NULL;
 	return (result);
 }

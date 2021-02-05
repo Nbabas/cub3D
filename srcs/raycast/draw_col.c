@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 19:10:13 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/03 17:06:02 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/04 14:32:52 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	put_pixel_text(t_data *d, t_ray *r, t_wall *w)
 		ytext = w->start + (w->h / 2) - (g_h_resolution / 2);
 		ytext = ytext * ((float)d->t[id_t].h / w->h);
 		color = d->t[id_t].addr[(d->t[id_t].w * ytext) + xtext];
-		if (color != 0x000000)
+		if (color != 0x000000 && color != -16777216)
 			g_img_addr[(w->start * g_w_resolution) + r->i] = color;
 		w->start++;
 	}
