@@ -55,8 +55,7 @@ $(NAME): $(OBJ)
 	@make -C ./libft
 	@make -C $(MLX_DIR)
 	@echo "\n\x1b[34mCompiling program..."
-	$(CC) $(INC) $(OBJ) -Llibft -lft $(MLX) -o $(NAME)
-	#-fsanitize=address
+	$(CC) $(INC) $(OBJ) -Llibft -lft $(MLX) -o $(NAME) -fsanitize=address
 	@echo "\033[0m"
 
 clean:

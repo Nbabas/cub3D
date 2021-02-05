@@ -47,8 +47,6 @@ int	key_pressed(int keycode, t_data *d)
 
 int	key_released(int keycode, t_data *d)
 {
-	(void)d;
-	(void)keycode;
 	if (keycode == UP_ARROW || keycode == W)
 		d->p.walk_dir = 0;
 	else if (keycode == DOWN_ARROW || keycode == S)

@@ -19,8 +19,9 @@ int			is_wall(float y, float x, t_data *d)
 
 	mapx = floor(x / g_tile_size);
 	mapy = floor(y / g_tile_size);
+	//printf("x %f | y %f | mapx : %i - mapy :%i\n",x ,y ,mapx, mapy);
 	if (x < 0 || x > (g_n_col * g_tile_size) ||
-		y < 0 || y > (g_n_rows * g_tile_size) || mapx > d->xmax || mapy > d->ymax)
+		y < 0 || y > (g_n_rows * g_tile_size) || mapx > (d->xmax - 1) || mapy > (d->ymax - 1))
 		return (1);
 
 	if (d->map[mapy][mapx] == '1')

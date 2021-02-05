@@ -16,8 +16,8 @@
 /*
 **# define MINI_SCALE 0.20
 */
-# define P_SPEED 3
-# define R_SPEED 3
+# define P_SPEED 2
+# define R_SPEED 2
 # define SCREEN_MAX_WIDTH 1920
 # define SCREEN_MAX_HEIGHT 1080
 
