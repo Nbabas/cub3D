@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 12:07:04 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/03 17:07:04 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/08 08:48:04 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void		ft_init_player(t_data *d)
 	d->p.walk_dir = 0;
 	d->p.leftstep = 0;
 	d->p.rightstep = 0;
-	d->p.speed = P_SPEED;
+	d->p.speed = P_SPEED ;
 	d->p.r_speed = R_SPEED * (M_PI / 180);
 	d->p.size = 25;
 	get_p_dir(d);

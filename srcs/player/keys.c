@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 15:11:00 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/05 17:03:31 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/08 08:40:54 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int	next_key_pressed(int keycode, t_data *d)
 {
 	if (keycode == SPACE_BAR)
 	{
-		printf("%f\n", floor(g_mini_scale * 10));
 		if (floor(g_mini_scale * 10) == 2)
 			g_mini_scale = 0.8;
 		else
@@ -38,7 +37,6 @@ int	next_key_pressed(int keycode, t_data *d)
 
 int	key_pressed(int keycode, t_data *d)
 {
-	printf("keycode : %i\n", keycode);
 	if (keycode == UP_ARROW || keycode == W)
 		d->p.walk_dir = 1;
 	else if (keycode == DOWN_ARROW || keycode == S)
