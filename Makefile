@@ -39,6 +39,7 @@ SRC = 	cub3d \
 		tools/utils \
 		tools/bmpsaver \
 		tools/print_string \
+		tools/handle_sound \
 
 FIL = $(addsuffix .c, $(addprefix srcs/, $(SRC)))
 
@@ -52,15 +53,15 @@ BIN = $(addsuffix .o, $(SRC))
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@echo "\n\033[0;33mCompiling libft..."
+	@echo "\n\033[0;33m Compiling libft..."
 	@make -C ./libft
 	@make -C $(MLX_DIR)
-	@echo "\n\x1b[34mCompiling program..."
+	@echo "\n\033[0;34m Compiling program..."
 	$(CC)  $(INC) $(OBJ) -Llibft -lft $(MLX) -o $(NAME) #-fsanitize=address
 	@echo "\033[0m"
 
 clean:
-	@echo "\033[0;31mClean..."
+	@echo "\033[0;31m Clean..."
 	@make clean -C ./libft
 	@make clean -C $(MLX_DIR)
 	rm -rf $(OBJ)
@@ -68,7 +69,7 @@ clean:
 	@echo "\033[0m"
 
 fclean: clean
-	@echo "\033[0;31mDelete program..."
+	@echo "\033[0;31m Delete program..."
 	@make fclean -C ./libft
 	rm -f $(NAME)
 	@echo "\033[0m"

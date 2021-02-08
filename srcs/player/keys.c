@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 15:11:00 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/08 08:40:54 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/08 12:57:08 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,7 @@ int	next_key_pressed(int keycode, t_data *d)
 			g_mini_scale = .2;
 	}
 	else if (keycode == TAB)
-	{
-		if (PLATFORM == 1)
-			system("afplay ./textures/beh.mp3 -t 1 &");
-		else if (PLATFORM == 2)
-			system("mpg123 ./textures/beh.mp3 &");
-	}
+		play_sound('N');
 	else if (keycode == MAJ)
 		d->p.speed *= 2;
 	else if (keycode == ESC)

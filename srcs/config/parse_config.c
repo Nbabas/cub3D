@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 16:57:59 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/05 17:09:59 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/08 17:51:59 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,14 +80,28 @@ static int	check_textures(t_data *d, int words)
 
 static int	check_screen(t_data *d)
 {
+	int		maxx;
+	int		maxy;
+
 	d->w_resolution = ft_atoi(d->infos[1]);
 	d->h_resolution = ft_atoi(d->infos[2]);
 	if (d->w_resolution < 200 || d->h_resolution < 200)
 		return (SCREEN_SIZE_ERROR);
-	if (d->w_resolution > SCREEN_MAX_HEIGHT)
-		d->w_resolution = SCREEN_MAX_HEIGHT;
-	if (d->h_resolution > SCREEN_MAX_WIDTH)
-		d->h_resolution = SCREEN_MAX_WIDTH;
+	if (PLATFORM == 2)
+	{
+		mlx_get_screen_size(g_mlx_ptr, &maxx, &maxy);
+		if (d->w_resolution > maxx)
+			d->w_resolution = maxx;
+		if (d->h_resolution > maxy)
+			d->h_resolution = maxy - 45;
+	}
+	else
+	{
+		if (d->h_resolution > SCREEN_MAX_HEIGHT)
+			d->h_resolution = SCREEN_MAX_HEIGHT;
+		if (d->w_resolution > SCREEN_MAX_WIDTH)
+			d->w_resolution = SCREEN_MAX_WIDTH;
+	}
 	return (SUCCESS);
 }
 
@@ -114,5 +128,4 @@ void		parse_config(t_data *d)
 	else
 		ft_error(d, CONFIG_ERROR, d->infos[0]);
 	free_tab(d->infos, d->line, ' ', 0);
-
 }

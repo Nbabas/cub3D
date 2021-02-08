@@ -6,13 +6,13 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 09:50:19 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/05 10:36:00 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/08 13:21:41 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
 
-static int	check_config(t_data *d)
+static int		check_config(t_data *d)
 {
 	if (d->w_resolution == 0 || d->h_resolution == 0 || \
 	d->t[0].w == 0 || d->t[1].w == 0 || d->t[2].w == 0 || \
@@ -22,7 +22,7 @@ static int	check_config(t_data *d)
 	return (SUCCESS);
 }
 
-static int	get_nb_lines(char *line, t_data *d)
+static int		get_nb_lines(char *line, t_data *d)
 {
 	if ((d->err = line_is_map(line)) < 1)
 		return (d->err);
@@ -38,9 +38,9 @@ static int	get_nb_lines(char *line, t_data *d)
 **d->line = NULL;
 */
 
-static void	parse_file(t_data *d)
+static void		parse_file(t_data *d)
 {
-	int	xtmp;
+	int			xtmp;
 
 	xtmp = 0;
 	if (line_is_space(d->line) == SUCCESS && d->ymax > 0)
@@ -56,10 +56,11 @@ static void	parse_file(t_data *d)
 		d->xmax = xtmp;
 }
 
-void		parsing(t_data *d, char *file)
+void			parsing(t_data *d, char *file)
 {
-	static int ret;
-	char *ptr;
+	static int	ret;
+	char		*ptr;
+
 	ptr = d->line;
 	d->line = 0;
 	ret = 1;

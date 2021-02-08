@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 11:17:15 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/08 08:48:38 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/08 14:59:59 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 
 int			ft_exit(t_data *d)
 {
-
 	free_all(d);
-	system("leaks cub3D");
 	exit(0);
 }
 
@@ -44,7 +42,7 @@ void		ft_error(t_data *d, int err_type, char *str)
 		ft_printf(2, "Error\nLoading %s colors failed\n", str);
 	else if (err_type == CONFIG_ERROR && d->err == MISS_ARG_ERROR)
 		ft_printf(2, "Error\nConfiguration - Bad or Missing elements\n");
-	else if (err_type == CONFIG_ERROR || d->err == SCREEN_SIZE_ERROR)
+	else if (err_type == CONFIG_ERROR && d->err == SCREEN_SIZE_ERROR)
 		ft_printf(2, "Error\nScreen Size Error %s\n", str);
 	else if (err_type == CONFIG_ERROR)
 		ft_printf(2, "Error\nBad Configuration at line->|%s|<-\n", d->line);

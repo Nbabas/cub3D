@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 13:59:06 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/04 16:31:35 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/08 18:02:27 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void	fill_pixel(int fd)
 	int		x;
 	int		y;
 
-	y = g_h_resolution ;
+	y = g_h_resolution;
 	while (--y >= 0)
 	{
 		x = -1;
@@ -57,6 +57,7 @@ void		bmp_saver(t_data *d)
 {
 	int		fd;
 
+	ft_printf(1, "Saving...");
 	fd = open("img_saved.bmp", O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR);
 	if (fd > 0)
 	{
@@ -69,5 +70,6 @@ void		bmp_saver(t_data *d)
 		mlx_destroy_image(g_mlx_ptr, g_img_ptr);
 	else
 		free(g_img_ptr);
+	ft_printf(1, "OK\n");
 	ft_exit(d);
 }

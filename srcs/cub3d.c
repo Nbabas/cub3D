@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 09:14:16 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/05 15:51:48 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/08 16:06:36 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static int	check_open_map(char *file, t_data *d)
 		return (FD_ERROR);
 	return (SUCCESS);
 }
+
 /*
 **int		h;
 **int		w;
@@ -41,6 +42,8 @@ static void	create_window(t_data *d)
 				g_mlx_ptr, g_w_resolution, g_h_resolution, "That's my boy");
 	if (!g_mlx_win)
 		ft_error(d, MLX_ERROR, "Failed to create window");
+	mlx_string_put(g_mlx_ptr, g_mlx_win, g_w_resolution / 2,
+					g_h_resolution / 2, 0xFFFFFF, "Loading...");
 }
 
 void		game(t_data *d, char *pathmap)
@@ -54,6 +57,7 @@ void		game(t_data *d, char *pathmap)
 	ft_init_global(d);
 	ft_init_player(d);
 	ft_init_sprites(d);
+	get_sprites(d);
 	raycast_process(d);
 	listen_actions(d);
 }

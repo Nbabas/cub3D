@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 08:38:29 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/05 15:55:13 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/08 16:08:15 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,26 +61,28 @@ static void	draw_img(t_data *d)
 		trace_horizontal(&d->r, d);
 		trace_vertical(&d->r, d);
 		draw_column(&d->r, d, &d->w);
-
-/* 	printf("g tile : %i \n", g_tile_size);
-	printf("\nPxy %f:%f P.angle = %f || n° : %i || r.angle = %f ||",d->p.x,d->p.y, d->p.r_angle, d->r.i, d->r.angle);
-	printf("Hit x  = %f || Hit y = %f || Distance = %f || Hit Vertical = %i || ", d->r.hitx, d->r.hity, d->r.distance, d->r.hitvert);
-	d->r.faceup ? printf("Look UP "):0;
-	d->r.facedown ? printf("Look DOWN "):0;
-	d->r.faceright ? printf("& RIGHT\n"):0;
-	d->r.faceleft ? printf("& LEFT\n"):0; */
-
 		d->r.angle += (g_fov_angle / g_n_rays);
 		d->r.i++;
 	}
 }
+
+/*
+**	printf("g tile : %i \n", g_tile_size);
+**	printf("\nPxy %f:%f P.angle = %f || n° : %i || r.angle = %f ||",
+**	d->p.x,d->p.y, d->p.r_angle, d->r.i, d->r.angle);
+**	printf("Hit x  = %f || Hit y = %f || Distance = %f || Hit Vertical = %i ||",
+**	d->r.hitx, d->r.hity, d->r.distance, d->r.hitvert);
+**	d->r.faceup ? printf("Look UP "):0;
+**	d->r.facedown ? printf("Look DOWN "):0;
+**	d->r.faceright ? printf("& RIGHT\n"):0;
+**	d->r.faceleft ? printf("& LEFT\n"):0;
+*/
 
 int			raycast_process(t_data *d)
 {
 	create_image(d);
 	p_moves(d);
 	draw_background(d);
-	get_sprites(d);
 	draw_img(d);
 	draw_sprites(d);
 	draw_map(d);

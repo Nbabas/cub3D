@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 09:19:46 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/05 15:38:27 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/08 13:27:07 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,7 @@ static void	draw_p_collect(int x, int y, int s, int c)
 	}
 }
 
-
-int	draw_pixel_map(int x, int y, int c)
+int			draw_pixel_map(int x, int y, int c)
 {
 	int		x_rect;
 	int		y_rect;
@@ -79,13 +78,13 @@ int	draw_pixel_map(int x, int y, int c)
 	return (SUCCESS);
 }
 
-int	draw_basics(t_data *d)
+int			draw_basics(t_data *d)
 {
 	int		x;
 	int		y;
 	char	c;
 
- 	y = -1;
+	y = -1;
 	while (++y < d->ymax)
 	{
 		x = -1;
@@ -95,9 +94,12 @@ int	draw_basics(t_data *d)
 			if (c == '2' || c == '3' || c == '0')
 				if (draw_pixel_map(x, y, 0xFFFFFF) < 0)
 					return (ERROR);
+			if (c == '1')
+				draw_pixel_map(x, y, 0x0);
 			if (c == '3')
 				draw_p_collect((x + 0.5) * g_tile_size * g_mini_scale,
-							(y + 0.5) * g_tile_size * g_mini_scale, 20 * g_mini_scale, 0x47E53A);
+							(y + 0.5) * g_tile_size * g_mini_scale,
+							g_tile_size * g_mini_scale - 1, 0x47E53A);
 		}
 	}
 	return (SUCCESS);
@@ -105,8 +107,8 @@ int	draw_basics(t_data *d)
 
 void		draw_map(t_data *d)
 {
-	int pixelmaxx;
-	int pixelmaxy;
+	int		pixelmaxx;
+	int		pixelmaxy;
 
 	pixelmaxx = (d->xmax * g_tile_size * g_mini_scale);
 	pixelmaxy = (d->ymax * g_tile_size * g_mini_scale);
@@ -115,12 +117,13 @@ void		draw_map(t_data *d)
 		d->minimap = 0;
 		return ;
 	}
+	else
+		d->minimap = 1;
 	if (draw_basics(d) < 0)
-		;
+		return ;
 	draw_p_collect(d->p.x * g_mini_scale,
 				d->p.y * g_mini_scale,
-				d->p.size * g_mini_scale, 0x0078FF);
+				g_tile_size * g_mini_scale, 0x0078FF);
 	draw_fov(d->p.x * g_mini_scale, d->p.y * g_mini_scale, d->p.r_angle, 'L');
 	draw_fov(d->p.x * g_mini_scale, d->p.y * g_mini_scale, d->p.r_angle, 'R');
-
 }

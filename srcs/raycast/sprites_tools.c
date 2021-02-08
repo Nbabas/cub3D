@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 13:24:06 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/05 15:58:42 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/08 17:47:49 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,18 @@ void	get_coord_draw(t_spr *spr)
 		spr->endy = g_h_resolution;
 }
 
+void	update_dist_sprites(t_data *d)
+{
+	int		i;
+
+	i = -1;
+	while (++i < d->nb_spr)
+	{
+		d->sprites[i].dist = hypot(d->p.x - d->sprites[i].x,
+							d->p.y - d->sprites[i].y);
+	}
+}
+
 void	sort_sprites(t_data *d)
 {
 	int		i;
@@ -56,6 +68,7 @@ void	sort_sprites(t_data *d)
 
 	sorted = 0;
 	n = d->nb_spr;
+	update_dist_sprites(d);
 	while (sorted == 0)
 	{
 		sorted = 1;
@@ -74,43 +87,3 @@ void	sort_sprites(t_data *d)
 		n--;
 	}
 }
-
-/* float	calcul_angle(t_data *d, float x, float y)
-{
-	float	vx;
-	float	vy;
-	float	angle_p_spr;
-	float	angle_p;
-	float	angle_spr;
-
-	vx = x - d->p.x;
-	vy = y - d->p.y;
-	angle_p_spr = atan2(vy, vx);
-	angle_p = get_angle(d->p.r_angle);
-	angle_spr = angle_p - angle_p_spr;
-	if (angle_spr < -M_PI)
-		angle_spr += 2 * M_PI;
-	if (angle_spr > M_PI)
-		angle_spr -= 2 * M_PI;
-	angle_spr = fabs(angle_spr);
-	return (angle_spr);
-}
-
-int		is_visible(t_data *d, int i)
-{
-	float	angle_a;
-	float	angle_b;
-	float	angle_c;
-	float	size;
-	float	fov;
-
-	size = d->sprites[i].size;
-	angle_a = fabs(calcul_angle(d, d->sprites[i].x, d->sprites[i].y));
-	angle_b = fabs(calcul_angle(d, d->sprites[i].x + size,
-								d->sprites[i].y + size));
-	angle_c = fabs(angle_b - angle_a);
-	fov = g_fov_angle / 2 + angle_c;
-	if (angle_a < fov)
-		return (1);
-	return (0);
-} */

@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 09:38:24 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/08 08:48:09 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/08 17:45:56 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 **# define MINI_SCALE 0.20
 */
 # define P_SPEED 1
-# define R_SPEED 2
+# define R_SPEED 3
 # define SCREEN_MAX_WIDTH 1920
 # define SCREEN_MAX_HEIGHT 1080
 
@@ -26,7 +26,7 @@ int			g_w_resolution;
 int			g_h_resolution;
 int			g_n_rows;
 int			g_n_col;
-int			g_tile_size;
+float		g_tile_size;
 int			g_n_rays;
 char		**g_map;
 void		*g_mlx_ptr;

@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 15:29:10 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/05 16:46:00 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/08 13:15:33 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int		write_nbr_in(char *str, int nbr, int start)
 {
-	int	len;
-	int tmp;
+	int		len;
+	int		tmp;
 
 	len = 1;
 	tmp = nbr;
@@ -42,7 +42,7 @@ int		write_nbr_in(char *str, int nbr, int start)
 
 int		write_str_in(char str[], char *s, int start)
 {
-	int i;
+	int		i;
 
 	i = 0;
 	while (s[i])
@@ -51,17 +51,15 @@ int		write_str_in(char str[], char *s, int start)
 	return (start);
 }
 
-void check_strings(t_data *d)
+void	check_strings(t_data *d)
 {
-
-	char str[50];
-	int i;
+	char	str[50];
+	int		i;
 
 	i = 0;
 	if (d->minimap == 0)
 		mlx_string_put(g_mlx_ptr, g_mlx_win, 5,
 						10, 0x000000, "Map Too Big");
-
 	if (d->g.tocollect > 0)
 	{
 		i = write_str_in(str, "Items : ", 0);

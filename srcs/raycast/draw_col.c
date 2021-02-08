@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 19:10:13 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/04 14:32:52 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/08 16:04:31 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	draw_column(t_ray *r, t_data *d, t_wall *w)
 		w->start = 0;
 	w->end = (g_h_resolution / 2) + (w->h / 2);
 	if (w->end > g_h_resolution)
-		w->end = g_h_resolution - 1;
+		w->end = g_h_resolution;
 	put_pixel_text(d, r, w);
 }
 

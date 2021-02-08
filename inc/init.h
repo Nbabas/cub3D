@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 17:28:01 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/05 17:02:54 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/08 09:30:23 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,6 @@
 #  define RIGHT_ARROW 65363
 #  define TAB 65289
 #  define SPACE_BAR 32
+#  define MAJ 65505
 # endif
 #endif

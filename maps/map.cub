@@ -1,10 +1,10 @@
-R 300 300
+R 800 800
 NO ./textures/b2.xpm
 
 SO ./textures/b2.xpm
 WE ./textures/b2.xpm
 EA ./textures/b2.xpm
-S1 ./textures/mouton.xpm
+S1 ./textures/tonneau.xpm
 S2 ./textures/coeur.xpm
 
 

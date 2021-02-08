@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 11:38:07 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/05 15:50:36 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/08 13:17:10 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 void	free_all(t_data *d)
 {
- 	int i = -1;
+	int i;
+
+	i = -1;
 	if (d->map)
 		free_tab(d->map, "", 0, d->ymax);
 	if (d->sprites)

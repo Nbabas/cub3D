@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 09:14:11 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/05 15:37:10 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/08 17:15:41 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,11 @@ typedef struct	s_spr
 	float		y;
 	float		dist;
 	int			type;
-	float		startx;
-	float		starty;
-	float		endy;
-	float		endx;
-	float		screenx;
+	int			startx;
+	int			starty;
+	int			endy;
+	int			endx;
+	int			screenx;
 	float		newy;
 	float		w;
 	float		h;
@@ -225,4 +225,6 @@ void			bmp_saver(t_data *d);
 */
 
 void			check_strings(t_data *d);
+
+void			play_sound(char var);
 #endif
