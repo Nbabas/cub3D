@@ -6,7 +6,7 @@
 #    By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/09 16:09:34 by nbascaul          #+#    #+#              #
-#    Updated: 2021/02/03 12:29:27 by nbascaul         ###   ########.fr        #
+#    Updated: 2021/02/09 09:20:24 by nbascaul         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,7 +92,8 @@ $(NAME): $(OBJ)
 	ar rcs $@ $^
 
 %.o: %.c
-	$(CC) -I. -o $@ -c $? $(FLAGS)
+	@echo "\033[0;32m [OK] \033[0m       \033[0;33m Compiling:\033[0m" $<
+	-@$(CC) -I. -o $@ -c $? $(FLAGS)
 
 clean:
 	rm -f $(OBJ)

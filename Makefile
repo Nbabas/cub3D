@@ -48,32 +48,44 @@ OBJ = $(FIL:.c=.o)
 BIN = $(addsuffix .o, $(SRC))
 
 .c.o:
-	${CC} ${INC} -c $< -o ${<:.c=.o}
+	@echo "\033[0;32m [OK] \033[0m       \033[0;33m Compiling:\033[0m" $<
+	-@${CC} ${INC} -c $< -o ${<:.c=.o}
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	@echo "\n\033[0;33m Compiling libft..."
-	@make -C ./libft
-	@make -C $(MLX_DIR)
-	@echo "\n\033[0;34m Compiling program..."
-	$(CC)  $(INC) $(OBJ) -Llibft -lft $(MLX) -o $(NAME) #-fsanitize=address
-	@echo "\033[0m"
+	@make -s -C ./libft
+	@echo "\n\033[0;33m Compiling MLX..."
+	@make -s -C $(MLX_DIR) 2>/dev/null
+	@echo "\033[0;32m-->[OK] \033[0m"
+	@echo "\n\033[0;34m Compiling Program..."
+	-@$(CC) $(INC) $(OBJ) -Llibft -lft $(MLX) -o $(NAME) -fsanitize=address
+	@echo "\033[0;32m-->[OK] \033[0m"
+	@echo "\033[0;36m\033[0;40mStart program with : ./cub3D [path_map] [--save]\033[0m"
 
 clean:
-	@echo "\033[0;31m Clean..."
-	@make clean -C ./libft
-	@make clean -C $(MLX_DIR)
-	rm -rf $(OBJ)
-	rm -f img_saved.bmp
+	@echo "\033[0;31mClean..."
+	@make -s clean -C ./libft
+	@echo "\033[0;35m 	Libft "
+	@make -s clean -C $(MLX_DIR)
+	@echo "\033[0;35m 	MLX"
+	@rm -rf $(OBJ)
+	@echo "\033[0;35m 	OBJ"
+	@rm -f img_saved.bmp
+	@echo "\033[0;35m 	Img saved"
 	@echo "\033[0m"
 
 fclean: clean
-	@echo "\033[0;31m Delete program..."
-	@make fclean -C ./libft
-	rm -f $(NAME)
-	@echo "\033[0m"
+	@make -s fclean -C ./libft
+	@echo "\033[0;31mDelete program..."
+	@rm -f $(NAME)
+	@echo "-->[OK]"
+	@echo "-----------\033[0m"
+
 
 re: fclean all
+
+.SILENT: clean
 
 .PHONY: all clean fclean re
