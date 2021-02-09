@@ -8,6 +8,7 @@ SO ./textures/greystone.xpm
 EA ./textures/red.xpm
 WE ./textures/purplestone.xpm
 S1 ./textures/tonneau.xpm
+
 111111111111111111111111111111
 100000000010100000001000100001
 101000101110101010101010111101

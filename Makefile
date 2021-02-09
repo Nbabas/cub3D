@@ -59,6 +59,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	@echo "\n\033[0;33m Compiling libft..."
 	@make -s -C ./libft
+	@echo "\033[0;32m-->[OK] \033[0m"
 	@echo "\n\033[0;33m Compiling MLX..."
 	@make -s -C $(MLX_DIR) 2>/dev/null
 	@echo "\033[0;32m-->[OK] \033[0m"

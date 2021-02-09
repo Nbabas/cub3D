@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 09:50:19 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/09 12:56:06 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/09 16:16:09 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,7 @@ static void		parse_file(t_data *d)
 	int			xtmp;
 
 	xtmp = 0;
-	if (line_is_space(d->line) == SUCCESS && d->ymax > 0)
-		ft_error(d, MAP_ERROR, "Empty line detected");
-	else if (line_is_space(d->line) == SUCCESS)
+	if (line_is_space(d->line) == SUCCESS)
 		return ;
 	if ((d->err = check_config(d)) < 0)
 		ft_error(d, CONFIG_ERROR, "");

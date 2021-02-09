@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 08:38:29 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/08 16:08:15 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/09 16:18:48 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	ft_new_ray(t_ray *r, t_data *d)
 	r->y_step = 0;
 	r->hitx = 0;
 	r->hity = 0;
-	r->distance = INT_MAX;
+	r->distance = 2147483647;
 	r->hitvert = 0;
 }
 

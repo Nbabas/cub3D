@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 12:07:04 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/08 17:20:48 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/09 16:10:56 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	get_p_dir_next(t_data *d)
 		d->p.r_angle = 1.5 * M_PI;
 		d->p.xdir = 0;
 		d->p.ydir = -1;
-		d->p.planx = -0.6;
+		d->p.planx = -0.55;
 		d->p.plany = 0;
 	}
 	else if (d->por == 'S')
@@ -27,7 +27,7 @@ static void	get_p_dir_next(t_data *d)
 		d->p.r_angle = 0.5 * M_PI;
 		d->p.xdir = 0;
 		d->p.ydir = 1;
-		d->p.planx = 0.6;
+		d->p.planx = 0.55;
 		d->p.plany = 0;
 	}
 }
@@ -40,7 +40,7 @@ static void	get_p_dir(t_data *d)
 		d->p.xdir = -1;
 		d->p.ydir = 0;
 		d->p.planx = 0;
-		d->p.plany = 0.6;
+		d->p.plany = 0.55;
 	}
 	else if (d->por == 'E')
 	{
@@ -48,7 +48,7 @@ static void	get_p_dir(t_data *d)
 		d->p.xdir = 1;
 		d->p.ydir = 0;
 		d->p.planx = 0;
-		d->p.plany = -0.6;
+		d->p.plany = -0.55;
 	}
 	get_p_dir_next(d);
 }
