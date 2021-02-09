@@ -6,11 +6,25 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 10:12:56 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/09 19:12:29 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/09 21:04:40 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
+
+int		is_number(char *str)
+{
+	int	len;
+
+	len = ft_strlen(str);
+	while (*str)
+	{
+		if (!ft_isdigit(*str))
+			return (0);
+		str++;
+	}
+	return (1);
+}
 
 int		line_is_space(char *line)
 {

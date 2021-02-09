@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 09:14:11 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/09 18:20:15 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/09 22:33:26 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,8 @@ typedef struct	s_spr
 	int			endx;
 	int			screenx;
 	float		newy;
-	float		w;
-	float		h;
+	int			w;
+	int			h;
 	float		size;
 }				t_spr;
 
@@ -219,6 +219,7 @@ void			ft_free(char *tofree);
 void			free_tab(char **tab, char const *s, char sep, int n);
 void			free_all(t_data *d);
 void			bmp_saver(t_data *d);
+int				is_number(char *str);
 
 /*
 ** print_strings.c

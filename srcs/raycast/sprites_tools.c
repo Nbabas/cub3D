@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 13:24:06 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/08 17:47:49 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/10 00:09:37 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,21 @@ void	get_newy(t_data *d, int i)
 
 void	get_coord_draw(t_spr *spr)
 {
-	spr->w = spr->size;
-	spr->startx = -spr->w / 2 + spr->screenx;
+	int		tmpw;
+	int		tmph;
+
+	tmpw = spr->size;
+	spr->startx = -tmpw / 2 + spr->screenx;
 	if (spr->startx < 0)
 		spr->startx = 0;
-	spr->endx = spr->w / 2 + spr->screenx;
+	spr->endx = tmpw / 2 + spr->screenx;
 	if (spr->endx >= g_w_resolution)
 		spr->endx = g_w_resolution;
-	spr->h = spr->size;
-	spr->starty = -spr->h / 2 + g_h_resolution / 2;
+	tmph = spr->size;
+	spr->starty = -tmph / 2 + g_h_resolution / 2;
 	if (spr->starty < 0)
 		spr->starty = 0;
-	spr->endy = spr->h / 2 + g_h_resolution / 2;
+	spr->endy = tmph / 2 + g_h_resolution / 2;
 	if (spr->endy >= g_h_resolution)
 		spr->endy = g_h_resolution;
 }
@@ -54,8 +57,8 @@ void	update_dist_sprites(t_data *d)
 	i = -1;
 	while (++i < d->nb_spr)
 	{
-		d->sprites[i].dist = hypot(d->p.x - d->sprites[i].x,
-							d->p.y - d->sprites[i].y);
+		d->sprites[i].dist = hypot(d->sprites[i].x - d->p.x,
+							d->sprites[i].y - d->p.y);
 	}
 }
 

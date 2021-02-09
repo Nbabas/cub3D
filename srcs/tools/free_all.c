@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 11:38:07 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/09 19:43:17 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/09 21:43:05 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ static void	next_free_all(t_data *d)
 	i = -1;
 	while (++i <= 5)
 	{
-		if (PLATFORM == 2 && d->t[i].img != NULL)
+		if (PLATFORM == 2 && d->t[i].img)
 			mlx_destroy_image(g_mlx_ptr, d->t[i].img);
-		else if (PLATFORM == 1 && d->t[i].img != NULL)
+		else if (PLATFORM == 1 && d->t[i].img)
 		{
 			free(d->t[i].img);
 			d->t[i].img = 0;

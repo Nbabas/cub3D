@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 16:18:47 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/08 17:25:49 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/10 00:39:02 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,21 @@ static void	wich_collision(t_data *d, int mapx, int mapy)
 				play_sound('I');
 		}
 	}
+}
+
+static void	update_var_angle(t_data *d)
+{
+	float	tmpx;
+	float	tmpplanx;
+	float	tmpangle;
+
+	tmpx = d->p.xdir;
+	tmpplanx = d->p.planx;
+	tmpangle = d->p.turn_dir * d->p.r_speed;
+	d->p.xdir = d->p.xdir * cos(tmpangle) - d->p.ydir * sin(tmpangle);
+	d->p.ydir = tmpx * sin(tmpangle) + d->p.ydir * cos(tmpangle);
+	d->p.planx = d->p.planx * cos(tmpangle) - d->p.plany * sin(tmpangle);
+	d->p.plany = tmpplanx * sin(tmpangle) + d->p.plany * cos(tmpangle);
 }
 
 void		update_player(t_data *d, float step, char var)
@@ -55,21 +70,6 @@ void		update_player(t_data *d, float step, char var)
 		}
 	}
 	wich_collision(d, tmpx, tmpy);
-}
-
-static void	update_var_angle(t_data *d)
-{
-	float	tmpx;
-	float	tmpplanx;
-	float	tmpangle;
-
-	tmpx = d->p.xdir;
-	tmpplanx = d->p.planx;
-	tmpangle = d->p.turn_dir * d->p.r_speed;
-	d->p.xdir = d->p.xdir * cos(tmpangle) - d->p.ydir * sin(tmpangle);
-	d->p.ydir = tmpx * sin(tmpangle) + d->p.ydir * cos(tmpangle);
-	d->p.planx = d->p.planx * cos(tmpangle) - d->p.plany * sin(tmpangle);
-	d->p.plany = tmpplanx * sin(tmpangle) + d->p.plany * cos(tmpangle);
 }
 
 void		p_moves(t_data *d)

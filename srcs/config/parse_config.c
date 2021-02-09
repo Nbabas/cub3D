@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 16:57:59 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/09 19:46:47 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/09 21:05:47 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static int	check_colors(t_data *d)
 	if ((rgb = ft_split(d->infos[1], ',')) == 0)
 		return (COLORS_ERROR);
 	while (rgb[++i])
-		if (ft_atoi(rgb[i]) < 0 || ft_atoi(rgb[i]) > 255)
+		if (!is_number(rgb[i]) || ft_atoi(rgb[i]) < 0 || ft_atoi(rgb[i]) > 255)
 			return (COLORS_ERROR);
 	if ((i != 3) || (ft_strcmp(d->infos[0], "F") != 0 &&
 			(ft_strcmp(d->infos[0], "C") != 0)))
@@ -120,7 +120,7 @@ void		parse_config(t_data *d)
 	else if (ft_strchr("NSEW", d->infos[0][0]) && words == 2)
 	{
 		if ((d->err = check_textures(d, words)) < 0)
-			ft_error(d, CONFIG_ERROR, d->infos[1]);
+			ft_error(d, CONFIG_ERROR, "Textures");
 	}
 	else if (ft_strchr("CF", d->infos[0][0]) && words == 2)
 	{

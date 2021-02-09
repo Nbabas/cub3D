@@ -6,7 +6,7 @@ WE ./textures/b2.xpm
 EA ./textures/b2.xpm
 S2 ./textures/coeur.xpm
 C 135,206,250
-S1 ./textures/tonneau.xpm
+S1 ./textures/tree_snow.xpm
 F 0,100,0
 
            1111111111111111111111111
