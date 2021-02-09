@@ -78,7 +78,7 @@ clean:
 	@rm -rf $(OBJ)
 	@echo "\033[0;35mImg saved"
 	@rm -f img_saved.bmp
-	@echo "\033[0;32m__Cleaned__ \033[0m"
+	@echo "\033[0;32mCleaned \033[0m"
 
 fclean: clean
 	@make -s fclean -C ./libft

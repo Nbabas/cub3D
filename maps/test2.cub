@@ -1,14 +1,13 @@
-R  2147483647 2147483647
-C 255,20,30
-F  000,000,00
+R  1200 1200
+C 255,20,3
+F  000,000,0000
 
-NO      ./textures/eagle.xpm
+
+NO  ./textures/eagle.xpm
 SO ./textures/greystone.xpm
 EA ./textures/red.xpm
 WE ./textures/purplestone.xpm
-
-S1 ./textures/pilier.xpm
-
+S1 ./textures/tonneau.xpm
 111111111111111111111111111111
 100000000010100000001000100001
 101000101110101010101010111101

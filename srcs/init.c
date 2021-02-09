@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/16 19:27:25 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/09 08:32:50 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/09 12:51:21 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,16 @@ void		ft_init_sprites(t_data *d)
 
 void		ft_next_init(t_data *d)
 {
+	int		i;
+
+	i = -1;
 	d->nb_spr = 0;
 	d->sprites = NULL;
-	d->t[0].img = NULL;
-	d->t[1].img = NULL;
-	d->t[2].img = NULL;
-	d->t[3].img = NULL;
-	d->t[4].img = NULL;
-	d->t[5].img = NULL;
+	while (++i <= 5)
+	{
+		d->t[i].img = NULL;
+		d->t[i].w = 0;
+	}
 	d->g.collected = 0;
 	d->g.tocollect = 0;
 	d->bmp = 0;

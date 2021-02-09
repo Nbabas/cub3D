@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 11:38:07 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/08 13:17:10 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/09 12:55:04 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	free_all(t_data *d)
 		free(d->buff);
 	if (d->sprites)
 		free(d->sprites);
+
 	while (d->t[++i].img != NULL && i <= 5)
 	{
 		if (PLATFORM == 2)
