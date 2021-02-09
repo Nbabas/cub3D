@@ -11,8 +11,6 @@ ifeq ($(CURRENTOS), Darwin)
     MLX = -L $(MLX_DIR) -lmlx -lm -framework OpenGL -framework AppKit
 endif
 
-LISTDPD := $(shell dpkg -l | grep mpg123 -c)
-
 NAME = cub3D
 
 CC = clang -g3 -Wall -Wextra -Werror
@@ -68,7 +66,7 @@ $(NAME): packages $(OBJ)
 
 packages:
 	@echo "\n\033[0;33m Checking for dependencies...\033[0m"
-	@echo if $(LISTDPD) -lt  2 && $(CURRENTOS) == "Linux"; then echo "\033[0;32m-->Installing MGP123 \033[0m";sudo apt-get install mpg123;fi
+	@echo if $(CURRENTOS) == "Linux" && $(shell dpkg -l | grep mpg123 -c) -lt  2; then echo "\033[0;32m-->Installing MGP123 \033[0m";sudo apt-get install mpg123;fi
 
 clean:
 	@echo "\033[0;31m__Clean__"
