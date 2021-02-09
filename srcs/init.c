@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/16 19:27:25 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/08 17:50:53 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/09 08:32:50 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void		ft_init(t_data *d)
 void		ft_init_global(t_data *d)
 {
 	g_tile_size = (d->w_resolution / d->xmax);
+	(g_tile_size == 0) ? g_tile_size = 1 : 0;
 	g_n_rows = d->ymax;
 	g_n_col = d->xmax;
 	g_n_rays = g_w_resolution;

@@ -1,10 +1,10 @@
-R 1200 780
+R 600 600
 NO ./textures/NO.xpm
-
+S1 ./textures/tonneau.xpm
 SO ./textures/SO.xpm
 WE ./textures/WE.xpm
 EA ./textures/EA.xpm
-S1 ./textures/tonneau.xpm
+
 S2 ./textures/coeur.xpm
 F 220,100,0
 C 225,30,0

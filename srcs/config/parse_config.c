@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 16:57:59 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/08 17:51:59 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/09 08:24:41 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ static int	check_screen(t_data *d)
 		if (d->h_resolution > SCREEN_MAX_HEIGHT)
 			d->h_resolution = SCREEN_MAX_HEIGHT;
 		if (d->w_resolution > SCREEN_MAX_WIDTH)
-			d->w_resolution = SCREEN_MAX_WIDTH;
+			d->w_resolution = SCREEN_MAX_WIDTH - 45;
 	}
 	return (SUCCESS);
 }

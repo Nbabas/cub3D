@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 15:11:00 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/08 12:57:08 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/09 08:26:48 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@ int	next_key_pressed(int keycode, t_data *d)
 	else if (keycode == TAB)
 		play_sound('N');
 	else if (keycode == MAJ)
+	{
 		d->p.speed *= 2;
+		d->p.r_speed *= 2;
+	}
 	else if (keycode == ESC)
 		ft_exit(d);
 	return (SUCCESS);
@@ -63,7 +66,10 @@ int	key_released(int keycode, t_data *d)
 	else if (keycode == D)
 		d->p.rightstep = 0;
 	else if (keycode == MAJ)
+	{
 		d->p.speed /= 2;
+		d->p.r_speed /= 2;
+	}
 	return (SUCCESS);
 }
 
