@@ -6,12 +6,12 @@ ifeq ($(CURRENTOS), Linux)
 MLX_DIR = ./minilibx-linux
 MLX = -L $(MLX_DIR) -lmlx -lm -lbsd -lX11 -lXext
 LISTPKG := "$(shell dpkg -l | grep -c "mpg123")"
-all: packages $(NAME)
+
 endif
 ifeq ($(CURRENTOS), Darwin)
 MLX_DIR = ./mlxopengl
 MLX = -L $(MLX_DIR) -lmlx -lm -framework OpenGL -framework AppKit
-all: $(NAME)
+
 endif
 
 NAME = cub3D
@@ -54,6 +54,17 @@ BIN = $(addsuffix .o, $(SRC))
 	@echo "\033[0;32m [OK] \033[0m       \033[0;33m Compiling:\033[0m" $<
 	-@${CC} ${INC} -c $< -o ${<:.c=.o}
 
+all: $(NAME)
+ifeq ($(CURRENTOS), Linux)
+	@echo "\n\033[0;33m Checking for dependencies...\033[0m"
+ifneq ($(LISTPKG),"2")
+	@echo "\033[0;32m-->Installing MGP123 \033[0m"
+	sudo apt-get install mpg123
+	@echo "\033[0;32m-->MGP123 Installed\033[0m"
+else
+	@echo "\033[0;32m-->Everything is OK \033[0m"
+endif
+endif
 
 $(NAME): $(OBJ)
 	@echo "\n\033[0;33m Compiling libft..."
