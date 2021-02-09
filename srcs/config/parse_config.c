@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 16:57:59 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/09 08:24:41 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/09 19:46:47 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,14 @@ static int	check_colors(t_data *d)
 	if ((rgb = ft_split(d->infos[1], ',')) == 0)
 		return (COLORS_ERROR);
 	while (rgb[++i])
-	{
 		if (ft_atoi(rgb[i]) < 0 || ft_atoi(rgb[i]) > 255)
 			return (COLORS_ERROR);
-	}
-	if (i != 3)
+	if ((i != 3) || (ft_strcmp(d->infos[0], "F") != 0 &&
+			(ft_strcmp(d->infos[0], "C") != 0)))
+	{
+		free_tab(rgb, d->infos[1], ',', 0);
 		return (COLORS_ERROR);
+	}
 	if (ft_strcmp(d->infos[0], "F") == 0)
 		d->f_color = get_rgb(rgb);
 	else if (ft_strcmp(d->infos[0], "C") == 0)
@@ -126,6 +128,9 @@ void		parse_config(t_data *d)
 			ft_error(d, CONFIG_ERROR, d->infos[0]);
 	}
 	else
+	{
+		d->err = CONFIG_ERROR;
 		ft_error(d, CONFIG_ERROR, d->infos[0]);
+	}
 	free_tab(d->infos, d->line, ' ', 0);
 }

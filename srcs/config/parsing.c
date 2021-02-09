@@ -6,13 +6,13 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 09:50:19 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/09 16:16:09 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/09 19:47:11 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
 
-static int		check_config(t_data *d)
+int				check_config(t_data *d)
 {
 	if (d->w_resolution == 0 || d->h_resolution == 0 || \
 	d->t[0].w == 0 || d->t[1].w == 0 || d->t[2].w == 0 || \
@@ -57,17 +57,15 @@ static void		parse_file(t_data *d)
 void			parsing(t_data *d, char *file)
 {
 	static int	ret;
-	char		*ptr;
 
-	ptr = d->line;
 	d->line = 0;
 	ret = 1;
 	(void)file;
 	while (ret != 0)
 	{
 		ret = get_next_line(d->fd, &(d->line));
-		while (ft_isspace(*d->line) && !check_config(d))
-			(d->line)++;
+		while (ft_isspace(*d->line) && check_config(d) < 0)
+			(*d->line)++;
 		if (*(d->line) && ft_strchr("NSEWRCF", *(d->line))
 			&& check_config(d) < 0)
 		{
@@ -76,7 +74,7 @@ void			parsing(t_data *d, char *file)
 		}
 		else
 			parse_file(d);
-		free(d->line);
+		ft_free(d->line);
 	}
 	close(d->fd);
 	process_map(d, file);

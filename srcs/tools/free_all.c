@@ -6,29 +6,22 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 11:38:07 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/09 12:55:04 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/09 19:43:17 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
 
-void	free_all(t_data *d)
+static void	next_free_all(t_data *d)
 {
-	int i;
+	int		i;
 
 	i = -1;
-	if (d->map)
-		free_tab(d->map, "", 0, d->ymax);
-	if (d->sprites)
-		free(d->buff);
-	if (d->sprites)
-		free(d->sprites);
-
-	while (d->t[++i].img != NULL && i <= 5)
+	while (++i <= 5)
 	{
-		if (PLATFORM == 2)
+		if (PLATFORM == 2 && d->t[i].img != NULL)
 			mlx_destroy_image(g_mlx_ptr, d->t[i].img);
-		else if (PLATFORM == 1)
+		else if (PLATFORM == 1 && d->t[i].img != NULL)
 		{
 			free(d->t[i].img);
 			d->t[i].img = 0;
@@ -39,4 +32,21 @@ void	free_all(t_data *d)
 	free(d);
 	if (g_mlx_win)
 		mlx_destroy_window(g_mlx_ptr, g_mlx_win);
+}
+
+void		free_all(t_data *d)
+{
+	if (d->map)
+		free_tab(d->map, "", 0, d->ymax);
+	if (d->sprites)
+		free(d->buff);
+	if (d->sprites)
+		free(d->sprites);
+	if (d->err < 0 && d->line && check_config(d) < 0)
+	{
+		if (d->infos[0])
+			free_tab(d->infos, d->line, ' ', 0);
+		ft_free(d->line);
+	}
+	next_free_all(d);
 }

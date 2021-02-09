@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 10:12:56 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/05 11:06:26 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/09 19:12:29 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,5 @@ void	free_tab(char **tab, char const *s, char sep, int n)
 	}
 	if (tab)
 		free(tab);
-	tab = 0;
+	*tab = 0;
 }

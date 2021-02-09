@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 09:14:11 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/08 17:15:41 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/09 18:20:15 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,7 +174,7 @@ int				line_is_map(char *line);
 */
 void			process_map(t_data *d, char *file);
 int				*get_textures_img(t_data *d, int id);
-
+int				check_config(t_data *d);
 /*
 **checks
 */

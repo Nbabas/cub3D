@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 14:25:43 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/08 17:56:59 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/09 19:34:37 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ void	new_sprite(t_data *d, int i, int x, int y)
 	d->sprites[i].dist = hypot(d->p.x - d->sprites[i].x,
 							d->p.y - d->sprites[i].y);
 	d->sprites[i].type = d->map[y][x] - '0';
-	if (d->t[d->sprites[i].type + 2].addr == NULL)
+	if (d->t[d->sprites[i].type + 2].img == NULL)
 	{
-		d->err = CONFIG_ERROR;
-		ft_error(d, TEXTURES_ERROR, "Sprites Texture Missing");
+		d->err = TEXTURES_ERROR;
+		ft_error(d, CONFIG_ERROR, "Sprites Texture Missing");
 	}
 }
 
