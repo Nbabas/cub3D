@@ -4,10 +4,8 @@ NO ./textures/b2.xpm
 SO ./textures/b2.xpm
 WE ./textures/b2.xpm
 EA ./textures/b2.xpm
-S1 ./textures/mouton.xpm
+S1 ./textures/pilier.xpm
 S2 ./textures/coeur.xpm
-
-
 F 0,100,0
 
 C 135,206,250

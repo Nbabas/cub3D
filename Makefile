@@ -55,16 +55,6 @@ BIN = $(addsuffix .o, $(SRC))
 	-@${CC} ${INC} -c $< -o ${<:.c=.o}
 
 all: $(NAME)
-ifeq ($(CURRENTOS), Linux)
-	@echo "\n\033[0;33m Checking for dependencies...\033[0m"
-ifneq ($(LISTPKG),"2")
-	@echo "\033[0;32m-->Installing MGP123 \033[0m"
-	sudo apt-get install mpg123
-	@echo "\033[0;32m-->MGP123 Installed\033[0m"
-else
-	@echo "\033[0;32m-->Everything is OK \033[0m"
-endif
-endif
 
 $(NAME): $(OBJ)
 	@echo "\n\033[0;33m Compiling libft..."
@@ -72,23 +62,20 @@ $(NAME): $(OBJ)
 	@echo "\n\033[0;33m Compiling MLX..."
 	@make -s -C $(MLX_DIR) 2>/dev/null
 	@echo "\033[0;32m-->[OK] \033[0m"
-	@echo "\n\033[0;34m Compiling $@..."
-	-@$(CC) $(INC) $(OBJ) -Llibft -lft $(MLX) -o $(NAME) -fsanitize=address
-	@echo "\033[0;32m-->[OK] \033[0m"
-	@echo "\033[0;36m\033[0;40mStart program with : ./cub3D [path_map] [--save]\033[0m"
-
-packages:
+ifeq ($(CURRENTOS), Linux)
 	@echo "\n\033[0;33m Checking for dependencies...\033[0m"
 ifneq ($(LISTPKG),"2")
 	@echo "\033[0;32m-->Installing MGP123 \033[0m"
 	sudo apt-get install mpg123
 	@echo "\033[0;32m-->MGP123 Installed\033[0m"
 else
-	@echo "\033[0;32m-->Everything is OK \033[0m"
+	@echo "\033[0;32m-->[OK] \033[0m"
 endif
-#if  dpkg -l | grep -c "mpg123"  ; then sudo apt-get install mpg123;fi
-	
-# && @echo $(dpkg -l | grep mpg123) -lt  2; then 
+endif
+	@echo "\n\033[0;34m Compiling $@..."
+	-@$(CC) $(INC) $(OBJ) -Llibft -lft $(MLX) -o $(NAME) -fsanitize=address
+	@echo "\033[0;32m-->[OK] \033[0m"
+	@echo "\033[0;36m\033[0;40mStart program with : ./cub3D [path_map] [--save]\033[0m"
 
 clean:
 	@echo "\033[0;31m__Clean__"
@@ -108,7 +95,6 @@ fclean: clean
 	@echo "\033[0;31m__Delete program__"
 	@rm -f $(NAME)
 	@echo "\033[0;32m$(NAME) removed\033[0m"
-
 
 re: fclean all
 
