@@ -1,12 +1,12 @@
 R 800 800
 
-NO ./textures/b2.xpm
-SO ./textures/b2.xpm
-WE ./textures/b2.xpm
-EA ./textures/b2.xpm
-S2 ./textures/coeur.xpm
+NO ./textures/b1.xpm
+SO ./textures/b1.xpm
+WE ./textures/b1.xpm
+EA ./textures/b1.xpm
+S2 ./textures/foin.xpm
 C 135,206,250
-S1 ./textures/tree_snow.xpm
+S1 ./textures/mouton.xpm
 F 0,100,0
 
            1111111111111111111111111

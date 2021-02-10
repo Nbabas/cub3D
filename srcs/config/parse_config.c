@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 16:57:59 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/09 21:05:47 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/10 10:09:54 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ void		parse_config(t_data *d)
 	else if (ft_strchr("NSEW", d->infos[0][0]) && words == 2)
 	{
 		if ((d->err = check_textures(d, words)) < 0)
-			ft_error(d, CONFIG_ERROR, "Textures");
+			ft_error(d, CONFIG_ERROR, d->infos[1]);
 	}
 	else if (ft_strchr("CF", d->infos[0][0]) && words == 2)
 	{
