@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 18:50:36 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/09 22:05:27 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/10 10:42:57 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,8 @@ int			*get_textures_img(t_data *d, int id)
 		d->err = TEXTURES_ERROR;
 		ft_error(d, CONFIG_ERROR, "Double textures");
 	}
-	d->t[id].img = mlx_xpm_file_to_image(g_mlx_ptr, d->infos[1],
-								&d->t[id].w, &d->t[id].h);
-	if (!d->t[id].img)
+	if (!(d->t[id].img = mlx_xpm_file_to_image(g_mlx_ptr, d->infos[1],
+								&d->t[id].w, &d->t[id].h)))
 	{
 		d->err = TEXTURES_ERROR;
 		ft_error(d, MLX_ERROR, d->infos[1]);

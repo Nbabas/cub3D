@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 09:14:11 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/09 22:33:26 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/10 11:03:16 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,6 +154,7 @@ typedef struct	s_data
 	float		*buff;
 	int			bmp;
 	int			minimap;
+	int			currenty;
 }				t_data;
 
 void			ft_init(t_data *d);

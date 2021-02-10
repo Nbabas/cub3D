@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 00:07:36 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/09 12:41:43 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/10 11:21:56 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int		put_map_in_tab(t_data *d, char *line)
 		d->map[i][j++] = '1';
 	d->map[i][j] = '\0';
 	i++;
+	d->currenty++;
 	return (SUCCESS);
 }
 
@@ -84,6 +85,9 @@ void	process_map(t_data *d, char *file)
 		ret = get_next_line(d->fd, &nl);
 		if (line_is_map(nl) == 1)
 			put_map_in_tab(d, nl);
+		if (line_is_space(nl) == SUCCESS &&
+			d->currenty > 0 && d->currenty != d->ymax)
+			ft_error(d, MAP_ERROR, "Empty line in map");
 		ft_free(nl);
 	}
 	close(d->fd);

@@ -4,7 +4,7 @@ NO ./textures/b1.xpm
 SO ./textures/b1.xpm
 WE ./textures/b1.xpm
 EA ./textures/b1.xpm
-S2 ./textures/foin.xpm
+S2 ./textures/coeur.xpm
 C 135,206,250
 S1 ./textures/mouton.xpm
 F 0,100,0

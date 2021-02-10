@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 09:50:19 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/09 19:47:11 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/10 11:23:15 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void			parsing(t_data *d, char *file)
 
 	d->line = 0;
 	ret = 1;
-	(void)file;
+	d->currenty = 0;
 	while (ret != 0)
 	{
 		ret = get_next_line(d->fd, &(d->line));

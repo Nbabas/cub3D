@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 09:14:16 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/09 22:14:00 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/10 10:49:49 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	create_window(t_data *d)
 	if (d->bmp == 1)
 		return ;
 	g_mlx_win = mlx_new_window(
-				g_mlx_ptr, g_w_resolution, g_h_resolution, "That's my boy");
+				g_mlx_ptr, g_w_resolution, g_h_resolution, "AperiCub3D");
 	if (!g_mlx_win)
 		ft_error(d, MLX_ERROR, "Failed to create window");
 	mlx_string_put(g_mlx_ptr, g_mlx_win, g_w_resolution / 2,
