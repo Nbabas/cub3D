@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 09:19:46 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/08 13:27:07 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/10 01:10:24 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,13 @@ static void	draw_fov(int px, int py, float pangle, char l_r)
 		angleline = pangle - (g_fov_angle / 2);
 	else
 		angleline = pangle + (g_fov_angle / 2);
-	while (i < 50 * g_mini_scale)
+	while (i < 4 * g_mini_scale * g_tile_size)
 	{
 		if (&g_img_addr[(py + y) * g_w_resolution + (px + x)] < g_img_addr)
 			return ;
-		g_img_addr[(py + y) * g_w_resolution + (px + x)] = 0x0078FF;
+		if (py + y > 0 && py + y <= g_h_resolution &&
+			px + x > 0 && px + x <= g_w_resolution)
+			g_img_addr[(py + y) * g_w_resolution + (px + x)] = 0x0078FF;
 		x = cos(angleline) * i;
 		y = sin(angleline) * i;
 		i++;

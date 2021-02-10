@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 14:25:43 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/10 00:37:49 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/10 01:10:11 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,11 +84,11 @@ void	draw_sprites(t_data *d)
 	{
 		get_newy(d, i);
 		if (d->sprites[i].type == 3)
-			d->sprites[i].size =
-			g_tile_size * 0.2 / d->sprites[i].dist * d->w.dist;
+			d->sprites[i].size = 0.3 * g_tile_size * fabs((int)g_h_resolution\
+								/ d->sprites[i].newy);
 		else
-			d->sprites[i].size =
-			g_tile_size / d->sprites[i].dist * d->w.dist;
+			d->sprites[i].size = g_tile_size * fabs((int)g_h_resolution\
+								/ d->sprites[i].newy);
 		get_coord_draw(&d->sprites[i]);
 		draw_sprite(&d->sprites[i], d->sprites[i].newy, d);
 		i++;
