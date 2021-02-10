@@ -4,9 +4,9 @@ NO ./textures/roche1.xpm
 SO ./textures/planche1.xpm
 WE ./textures/planche2.xpm
 EA ./textures/planche3.xpm
-S2 ./textures/coeur.xpm
+S1 ./textures/coeur.xpm
 C 135,206,250
-S1 ./textures/foin1.xpm
+S ./textures/foin1.xpm
 F 0,100,0
 
            1111111111111111111111111

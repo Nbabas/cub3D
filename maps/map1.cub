@@ -3,7 +3,7 @@ NO ./textures/NO.xpm
 SO ./textures/SO.xpm
 WE ./textures/WE.xpm
 EA ./textures/EA.xpm
-S1 ./textures/tonneau.xpm
+S ./textures/tonneau.xpm
 
 F 181,181,181
 C 135,206,255

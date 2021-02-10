@@ -4,8 +4,8 @@ NO ./textures/NO.xpm
 SO ./textures/silex.xpm
 WE ./textures/silex.xpm
 EA ./textures/silex.xpm
-S1 ./textures/tonneau.xpm
-S2 ./textures/coeur.xpm
+S ./textures/tonneau.xpm
+S1 ./textures/coeur.xpm
 
 
 F 0,100,0

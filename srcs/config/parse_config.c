@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 16:57:59 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/10 10:09:54 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/10 11:41:29 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,7 @@ static int	check_textures(t_data *d, int words)
 		if ((fd = open(d->infos[1], O_RDONLY)) == -1)
 			return (FD_ERROR);
 		close(fd);
-		if (ft_strcmp(d->infos[0], "S1") == 0 && words == 2)
-			d->t[4].addr = get_textures_img(d, 4);
-		else if (ft_strcmp(d->infos[0], "S2") == 0 && words == 2)
-			d->t[5].addr = get_textures_img(d, 5);
-		else if (ft_strcmp(d->infos[0], "NO") == 0 && words == 2)
+		if (ft_strcmp(d->infos[0], "NO") == 0 && words == 2)
 			d->t[0].addr = get_textures_img(d, 0);
 		else if (ft_strcmp(d->infos[0], "SO") == 0 && words == 2)
 			d->t[1].addr = get_textures_img(d, 1);
@@ -74,6 +70,10 @@ static int	check_textures(t_data *d, int words)
 			d->t[2].addr = get_textures_img(d, 2);
 		else if (ft_strcmp(d->infos[0], "EA") == 0 && words == 2)
 			d->t[3].addr = get_textures_img(d, 3);
+		else if (ft_strcmp(d->infos[0], "S") == 0 && words == 2)
+			d->t[4].addr = get_textures_img(d, 4);
+		else if (ft_strcmp(d->infos[0], "S1") == 0 && words == 2)
+			d->t[5].addr = get_textures_img(d, 5);
 		else
 			return (TEXTURES_ERROR);
 	}

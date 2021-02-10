@@ -4,8 +4,8 @@ NO  ./textures/eagle.xpm
 SO ./textures/greystone.xpm
 EA ./textures/red.xpm
 WE ./textures/purplestone.xpm
-S1 ./textures/tree_snow.xpm
-S2 ./textures/coeur.xpm
+S ./textures/tree_snow.xpm
+S1 ./textures/coeur.xpm
 
 C 135,206,250
 
