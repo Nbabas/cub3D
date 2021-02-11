@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 15:29:10 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/11 14:55:44 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/11 16:28:02 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,8 @@ void		check_strings(t_data *d)
 		i = write_str_in(str, " / ", write_nbr_in(str, d->g.collected, i));
 		i = write_nbr_in(str, d->g.tocollect, i);
 		if (d->g.collected != d->g.tocollect)
-			mlx_string_put(g_mlx_ptr, g_mlx_win, g_w_resolution - 100,
-						g_h_resolution - 20, 0x000000, str);
+			mlx_string_put(g_mlx_ptr, g_mlx_win, g_w_resolution / 2 - 15,
+						30, 0x000000, str);
 	}
 	next_string(d, str);
 }
