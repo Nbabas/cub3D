@@ -6,11 +6,25 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 13:24:06 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/10 00:09:37 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/11 14:46:44 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
+
+void	get_spr_size(t_data *d, int i)
+{
+	float	coef;
+
+	if (d->sprites[i].type == 3 || d->sprites[i].type == 4)
+		coef = 0.3;
+	else if (d->sprites[i].type == 5)
+		coef = 0.5;
+	else
+		coef = 1;
+	d->sprites[i].size = g_tile_size * coef * fabs((int)g_h_resolution\
+							/ d->sprites[i].newy);
+}
 
 void	get_newy(t_data *d, int i)
 {

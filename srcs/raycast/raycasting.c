@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 08:38:29 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/09 16:18:48 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/11 14:32:24 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,16 +52,16 @@ float		get_angle(float angle)
 static void	draw_img(t_data *d)
 {
 	d->r.i = 0;
-	d->r.angle = d->p.r_angle - (g_fov_angle / 2);
+	d->w.dist = (g_w_resolution / 2) / tan(g_fov_angle / 2);
 	while (d->r.i < g_n_rays)
 	{
+		d->r.angle = d->p.r_angle + atan((d->r.i - g_n_rays / 2) / d->w.dist);
 		d->r.angle = get_angle(d->r.angle);
 		ft_new_ray(&d->r, d);
 		get_orientation_ray(&d->r);
 		trace_horizontal(&d->r, d);
 		trace_vertical(&d->r, d);
 		draw_column(&d->r, d, &d->w);
-		d->r.angle += (g_fov_angle / g_n_rays);
 		d->r.i++;
 	}
 }
@@ -86,18 +86,12 @@ int			raycast_process(t_data *d)
 	draw_img(d);
 	draw_sprites(d);
 	draw_map(d);
+	if (d->g.weapon)
+		draw_weapon(d);
 	if (d->bmp == 1)
 		bmp_saver(d);
 	mlx_put_image_to_window(g_mlx_ptr, g_mlx_win, g_img_ptr, 0, 0);
 	check_strings(d);
-	if (PLATFORM == 2)
-		mlx_destroy_image(g_mlx_ptr, g_img_ptr);
-	else
-	{
-		free(g_img_ptr);
-		g_img_addr = 0;
-		free(g_img_addr);
-		g_img_addr = 0;
-	}
+	clean_image();
 	return (SUCCESS);
 }

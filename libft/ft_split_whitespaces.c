@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/08 03:57:17 by bfleury           #+#    #+#             */
-/*   Updated: 2021/02/04 14:16:46 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/10 18:37:27 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,20 +50,20 @@ char			**ft_split_whitespaces(char *str)
 	
 	while (*str == ' ' || *str == '\t' || *str == '\n')
 		str++;
-	if (!(result = (char**)malloc((sizeof(char*) * ft_nbword(str)) + 1)))
+	if (!(result = (char**)malloc((sizeof(char*) * (ft_nbword(str) + 1)))))
 		return (NULL);
 	i = 0;
 	while (ft_nbword(str) != 0 && *str)
 	{
 		while (*str == ' ' || *str == '\t' || *str == '\n')
 			str++;
-		if (!(tmp = (char*)malloc(sizeof(char) * ft_wordlen(str) + 1)))
+		if (!(tmp = (char*)malloc(sizeof(char) * (ft_wordlen(str) + 1))))
 			return (NULL);
 		ft_strncpy(tmp, str, ft_wordlen(str));
 		tmp[ft_wordlen(str)] = '\0';
 		result[i++] = tmp;
 		str += ft_wordlen(str);
 	}
-	result[i] = NULL;
+	result[i] = 0;
 	return (result);
 }

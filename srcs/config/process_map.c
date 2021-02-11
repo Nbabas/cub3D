@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 00:07:36 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/10 11:21:56 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/11 15:42:08 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,15 +56,13 @@ int		line_is_map(char *line)
 	{
 		while (*line)
 		{
-			if (*line != '0' && *line != '1' && *line != ' ' && *line != 'N' \
-			&& *line != 'S' && *line != 'W' && *line != 'E' && *line != '\n' \
-			&& *line != '2' && *line != '\t' && *line != '3')
+			if (!strchr(MAP, *line))
 				return (WRONG_SIGN);
 			line++;
 		}
 		return (1);
 	}
-	return (0);
+	return (MAP_ERROR);
 }
 
 void	process_map(t_data *d, char *file)
@@ -72,7 +70,8 @@ void	process_map(t_data *d, char *file)
 	static int	ret = 1;
 	char		*nl;
 
-	nl = NULL;
+	nl = 0;
+	d->init_infos = 1;
 	if (d->xmax == 0 || d->ymax == 0)
 		ft_error(d, MAP_ERROR, "");
 	if ((d->fd = open(file, O_RDONLY)) < 0)

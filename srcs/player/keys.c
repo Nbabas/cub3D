@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 15:11:00 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/09 08:52:49 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/11 14:27:16 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	next_key_pressed(int keycode, t_data *d)
 			g_mini_scale = 0.2;
 	}
 	if (keycode == TAB)
-		play_sound('N');
+		play_sound('H');
 	else if (keycode == MAJ)
 	{
 		d->p.speed *= 2;
@@ -35,18 +35,22 @@ int	next_key_pressed(int keycode, t_data *d)
 
 int	key_pressed(int keycode, t_data *d)
 {
-	if (keycode == UP_ARROW || keycode == W)
-		d->p.walk_dir = 1;
-	else if (keycode == DOWN_ARROW || keycode == S)
-		d->p.walk_dir = -1;
-	else if (keycode == LEFT_ARROW)
-		d->p.turn_dir = -1;
-	else if (keycode == RIGHT_ARROW)
-		d->p.turn_dir = 1;
-	else if (keycode == A)
-		d->p.leftstep = 1;
-	else if (keycode == D)
-		d->p.rightstep = 1;
+	if (d->g.life > 0 &&
+		(d->g.collected != d->g.tocollect || d->g.tocollect == 0))
+	{
+		if (keycode == UP_ARROW || keycode == W)
+			d->p.walk_dir = 1;
+		else if (keycode == DOWN_ARROW || keycode == S)
+			d->p.walk_dir = -1;
+		else if (keycode == LEFT_ARROW)
+			d->p.turn_dir = -1;
+		else if (keycode == RIGHT_ARROW)
+			d->p.turn_dir = 1;
+		else if (keycode == A)
+			d->p.leftstep = 1;
+		else if (keycode == D)
+			d->p.rightstep = 1;
+	}
 	next_key_pressed(keycode, d);
 	return (SUCCESS);
 }
@@ -69,6 +73,12 @@ int	key_released(int keycode, t_data *d)
 	{
 		d->p.speed /= 2;
 		d->p.r_speed /= 2;
+	}
+	else if (keycode == R)
+	{
+		ft_init_player(d);
+		ft_init_sprites(d);
+		get_sprites(d);
 	}
 	return (SUCCESS);
 }

@@ -6,11 +6,20 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 18:50:36 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/10 10:42:57 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/11 15:46:32 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
+
+void		put_pixel(unsigned int color, int p_x, int p_y)
+{
+	if (p_y >= g_h_resolution || p_x >= g_w_resolution || p_x < 0 ||
+		p_y < 0 || ((p_y * g_w_resolution + p_x) >=
+		(g_w_resolution * g_h_resolution - 1)))
+		return ;
+	g_img_addr[p_y * g_w_resolution + p_x] = color;
+}
 
 void		create_image(t_data *d)
 {

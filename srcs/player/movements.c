@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 16:18:47 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/10 00:39:02 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/11 13:02:56 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,14 @@ static void	wich_collision(t_data *d, int mapx, int mapy)
 {
 	if (mapx < d->xmax - 1 && mapy < d->ymax - 1 && mapx > 0 && mapy > 0)
 	{
-		if (d->map[mapy][mapx] == '3')
-		{
-			d->map[mapy][mapx] = '0';
-			d->nb_spr--;
-			d->g.collected++;
-			if (d->g.collected == d->g.tocollect)
-				play_sound('E');
-			else
-				play_sound('I');
-		}
+		if (d->map[mapy][mapx] == '3' && d->g.life < 100)
+			health_collision(d, mapx, mapy);
+		if (d->map[mapy][mapx] == '2' && d->g.life >= 5)
+			ennemy_collision(d, mapx, mapy);
+		if (d->map[mapy][mapx] == '4')
+			towin_collision(d, mapx, mapy);
+		if (d->map[mapy][mapx] == '5')
+			weapon_collision(d, mapx, mapy);
 	}
 }
 

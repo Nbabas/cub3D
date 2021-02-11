@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 09:19:46 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/10 01:10:24 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/11 00:56:43 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ int			draw_basics(t_data *d)
 		while (++x < d->xmax)
 		{
 			c = d->map[y][x];
-			if (c == '2' || c == '3' || c == '0')
+			if (strchr(SPRITES, c) || c == '0')
 				if (draw_pixel_map(x, y, 0xFFFFFF) < 0)
 					return (ERROR);
 			if (c == '1')

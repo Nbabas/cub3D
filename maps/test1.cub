@@ -1,9 +1,9 @@
 R 600 600
-NO ./textures/NO.xpm
 S ./textures/tonneau.xpm
-SO ./textures/SO.xpm
-WE ./textures/WE.xpm
-EA ./textures/EA.xpm
+NO  ./textures/eagle.xpm
+SO ./textures/greystone.xpm
+EA ./textures/red.xpm
+WE ./textures/purplestone.xpm
 
 S1 ./textures/coeur.xpm
 F 220,100,0

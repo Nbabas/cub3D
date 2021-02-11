@@ -6,11 +6,17 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 12:07:04 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/09 22:28:51 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/11 12:51:04 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
+
+static void	ft_init_game(t_data *d)
+{
+	d->g.life = 50;
+	d->g.weapon = 0;
+}
 
 static void	get_p_dir_next(t_data *d)
 {
@@ -66,4 +72,5 @@ void		ft_init_player(t_data *d)
 	d->p.r_speed = R_SPEED * (M_PI / 180);
 	d->p.size = 5;
 	get_p_dir(d);
+	ft_init_game(d);
 }

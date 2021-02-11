@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 11:17:15 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/10 00:31:33 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/11 15:46:39 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void		ft_error(t_data *d, int err_type, char *str)
 	else if (err_type == CONFIG_ERROR && d->err == COLORS_ERROR)
 		ft_printf(2, "Error\nLoading %s colors failed\n", str);
 	else if (err_type == CONFIG_ERROR && d->err == MISS_ARG_ERROR)
-		ft_printf(2, "Error\nConfiguration - Bad or Missing elements\n");
+		ft_printf(2, "Error\nBad or Missing elements ->%s<- \n", d->line);
 	else if (err_type == CONFIG_ERROR && d->err == SCREEN_SIZE_ERROR)
 		ft_printf(2, "Error\nScreen Size Error %s\n", str);
 	else if (err_type == CONFIG_ERROR && d->err == TEXTURES_ERROR)

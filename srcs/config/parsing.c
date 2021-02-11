@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 09:50:19 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/10 11:23:15 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/11 15:13:13 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,14 @@ int				check_config(t_data *d)
 {
 	if (d->w_resolution == 0 || d->h_resolution == 0 || \
 	d->t[0].w == 0 || d->t[1].w == 0 || d->t[2].w == 0 || \
-	d->t[3].w == 0 || d->c_color == -1 || d->f_color == -1 || \
-	d->t[4].w == 0)
+	d->t[3].w == 0 || d->c_color == -1 || d->f_color == -1)
 		return (MISS_ARG_ERROR);
 	return (SUCCESS);
 }
 
 static int		get_nb_lines(char *line, t_data *d)
 {
-	if ((d->err = line_is_map(line)) < 1)
+	if (((d->err = line_is_map(line)) < 1))
 		return (d->err);
 	else
 	{
@@ -42,6 +41,7 @@ static void		parse_file(t_data *d)
 {
 	int			xtmp;
 
+	d->init_infos = 0;
 	xtmp = 0;
 	if (line_is_space(d->line) == SUCCESS)
 		return ;
@@ -66,8 +66,7 @@ void			parsing(t_data *d, char *file)
 		ret = get_next_line(d->fd, &(d->line));
 		while (ft_isspace(*d->line) && check_config(d) < 0)
 			(*d->line)++;
-		if (*(d->line) && ft_strchr("NSEWRCF", *(d->line))
-			&& check_config(d) < 0)
+		if (*(d->line) && ft_strchr("NSEWRCF", *(d->line)))
 		{
 			d->infos = ft_split_whitespaces(d->line);
 			parse_config(d);

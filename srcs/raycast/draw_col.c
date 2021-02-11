@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 19:10:13 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/08 16:04:31 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/10 17:25:28 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ void	draw_column(t_ray *r, t_data *d, t_wall *w)
 {
 	w->good_dist = r->distance * cos(r->angle - d->p.r_angle);
 	d->buff[r->i] = r->distance;
-	w->dist = (g_w_resolution / 2) / tan(g_fov_angle / 2);
 	w->h = (g_tile_size / w->good_dist) * w->dist;
 	w->start = (g_h_resolution / 2) - (w->h / 2);
 	if (w->start < 0)

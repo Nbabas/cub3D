@@ -6,12 +6,10 @@ ifeq ($(CURRENTOS), Linux)
 MLX_DIR = ./minilibx-linux
 MLX = -L $(MLX_DIR) -lmlx -lm -lbsd -lX11 -lXext
 LISTPKG := "$(shell dpkg -l | grep -c "mpg123")"
-
 endif
 ifeq ($(CURRENTOS), Darwin)
 MLX_DIR = ./mlxopengl
 MLX = -L $(MLX_DIR) -lmlx -lm -framework OpenGL -framework AppKit
-
 endif
 
 NAME = cub3D
@@ -25,10 +23,12 @@ SRC = 	cub3d \
 		player/init_player \
 		player/movements \
 		player/keys \
+		player/sprites_collisions \
 		config/checks \
 		config/parsing \
 		config/parse_config \
 		config/process_map \
+		config/check_textures \
 		raycast/draw_col \
 		raycast/raycasting \
 		raycast/trace_horizontal \
@@ -43,6 +43,8 @@ SRC = 	cub3d \
 		tools/bmpsaver \
 		tools/print_string \
 		tools/handle_sound \
+		tools/check_utils \
+		tools/hud \
 
 FIL = $(addsuffix .c, $(addprefix srcs/, $(SRC)))
 
@@ -74,7 +76,8 @@ else
 endif
 endif
 	@echo "\n\033[0;34m Compiling $@..."
-	-@$(CC) $(INC) $(OBJ) -Llibft -lft $(MLX) -o $(NAME) -fsanitize=address
+	-@$(CC) $(INC) $(OBJ) -Llibft -lft $(MLX) -o $(NAME) 
+#-fsanitize=address
 	@echo "\033[0;32m-->[OK] \033[0m"
 	@echo "\033[0;36m\033[0;40mStart program with : ./cub3D [path_map] [--save]\033[0m"
 

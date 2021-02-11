@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 10:12:56 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/10 11:12:53 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/10 22:30:16 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ int		ft_wordcount(char const *str, char c)
 
 	cmp = 0;
 	i = 0;
+	if (!str)
+		return (0);
 	while (str[i])
 	{
 		while (str[i] && str[i] == c)
@@ -78,5 +80,5 @@ void	free_tab(char **tab, char const *s, char sep, int n)
 	}
 	if (tab)
 		free(tab);
-	*tab = 0;
+	tab = 0;
 }

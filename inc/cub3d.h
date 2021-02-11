@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 09:14:11 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/10 11:03:16 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/11 14:58:45 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,8 @@ typedef struct	s_game
 {
 	int			tocollect;
 	int			collected;
+	int			life;
+	int			weapon;
 }				t_game;
 
 typedef struct	s_p
@@ -132,7 +134,7 @@ typedef struct	s_data
 {
 	int			w_resolution;
 	int			h_resolution;
-	t_textures	t[6];
+	t_textures	t[8];
 	int			c_color;
 	int			f_color;
 	int			fd;
@@ -155,6 +157,7 @@ typedef struct	s_data
 	int			bmp;
 	int			minimap;
 	int			currenty;
+	int			init_infos;
 }				t_data;
 
 void			ft_init(t_data *d);
@@ -169,6 +172,7 @@ void			parsing(t_data *d, char *file);
 void			parse_config(t_data *d);
 int				line_is_space(char *line);
 int				line_is_map(char *line);
+int				get_rgb(char **rgb_tab);
 
 /*
 ** parsing map
@@ -176,11 +180,13 @@ int				line_is_map(char *line);
 void			process_map(t_data *d, char *file);
 int				*get_textures_img(t_data *d, int id);
 int				check_config(t_data *d);
+
 /*
-**checks
+**checks / textures
 */
 int				check_file_extension(char *file, char *extension_name);
 int				check_map(t_data *d);
+int				check_textures(t_data *d, int words);
 
 /*
 **sprites
@@ -192,6 +198,7 @@ float			calcul_angle(t_data *d, float x, float y);
 void			sort_sprites(t_data *d);
 void			get_coord_draw(t_spr *spr);
 void			get_newy(t_data *d, int i);
+void			get_spr_size(t_data *d, int i);
 
 /*
 **raycasting
@@ -206,27 +213,34 @@ void			trace_horizontal(t_ray *r, t_data *d);
 void			trace_vertical(t_ray *r, t_data *d);
 int				is_wall(float y, float x, t_data *d);
 
-int				ft_exit(t_data *d);
 int				listen_actions(t_data *d);
 void			p_moves(t_data *d);
-
+void			towin_collision(t_data *d, int mapx, int mapy);
+void			health_collision(t_data *d, int mapx, int mapy);
+void			weapon_collision(t_data *d, int mapx, int mapy);
+void			ennemy_collision(t_data *d, int mapx, int mapy);
 /*
 ** utils.c
 */
 
 int				ft_wordcount(char const *str, char c);
+void			bmp_saver(t_data *d);
 void			ft_error(t_data *d, int err, char *str);
 void			ft_free(char *tofree);
 void			free_tab(char **tab, char const *s, char sep, int n);
 void			free_all(t_data *d);
-void			bmp_saver(t_data *d);
 int				is_number(char *str);
+void			clean_image(void);
+int				ft_exit(t_data *d);
 
 /*
-** print_strings.c
+** print_strings.c / HUD
 */
 
 void			check_strings(t_data *d);
-
 void			play_sound(char var);
+void			draw_life(t_data *d);
+void			draw_weapon(t_data *d);
+
+
 #endif

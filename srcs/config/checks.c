@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 12:12:21 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/04 11:15:54 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/10 23:28:23 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,15 @@ static int	map_is_closed(t_data *d)
 		{
 			if (d->map[y][x] != '1' && y == 0)
 				return (ERROR);
-			else if (d->map[y][x] != '1' && y == d->ymax)
+			else if (d->map[y][x] != '1' && y == d->ymax - 1)
 				return (ERROR);
 			else if (d->map[y][x] != '1' && x == 0)
 				return (ERROR);
-			else if (d->map[y][x] != '1' && x == d->xmax)
+			else if (d->map[y][x] != '1' && x == d->xmax - 1)
 				return (ERROR);
-			else if (d->map[y][x] == '2' || d->map[y][x] == '3')
+			else if (strchr(SPRITES, d->map[y][x]))
 				d->nb_spr++;
-			if (d->map[y][x] == '3')
+			if (d->map[y][x] == '4')
 				d->g.tocollect++;
 		}
 	}
@@ -48,7 +48,7 @@ int			check_map(t_data *d)
 		ft_error(d, MAP_ERROR, "Unable to find starting position");
 	if (d->por == '!')
 		ft_error(d, MAP_ERROR, "More than 1 starting point");
-	if (map_is_closed(d) == 0)
+	if (map_is_closed(d) < 0)
 		ft_error(d, MAP_ERROR, "Map not closed by '1'");
 	return (SUCCESS);
 }

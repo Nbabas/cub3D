@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/16 19:27:25 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/09 12:51:21 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/11 15:55:34 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void		ft_next_init(t_data *d)
 	i = -1;
 	d->nb_spr = 0;
 	d->sprites = NULL;
-	while (++i <= 5)
+	while (++i <= 7)
 	{
 		d->t[i].img = NULL;
 		d->t[i].w = 0;
@@ -37,12 +37,14 @@ void		ft_next_init(t_data *d)
 	d->g.tocollect = 0;
 	d->bmp = 0;
 	d->minimap = 1;
+	d->init_infos = -1;
 }
 
 void		ft_init(t_data *d)
 {
 	d->w_resolution = 0;
 	d->h_resolution = 0;
+	d->line = 0;
 	d->c_color = -1;
 	d->f_color = -1;
 	d->fd = -1;

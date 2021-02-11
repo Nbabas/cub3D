@@ -6,22 +6,16 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 16:57:59 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/10 11:41:29 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/11 14:09:23 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
 
-static int	get_rgb(char **rgb_tab)
+static int	free_then_exit(t_data *d, char **tab)
 {
-	int		r;
-	int		g;
-	int		b;
-
-	r = ft_atoi(rgb_tab[0]);
-	g = ft_atoi(rgb_tab[1]);
-	b = ft_atoi(rgb_tab[2]);
-	return ((r << 16) + (g << 8) + b);
+	free_tab(tab, d->infos[1], ',', 0);
+	return (COLORS_ERROR);
 }
 
 static int	check_colors(t_data *d)
@@ -36,47 +30,17 @@ static int	check_colors(t_data *d)
 		return (COLORS_ERROR);
 	while (rgb[++i])
 		if (!is_number(rgb[i]) || ft_atoi(rgb[i]) < 0 || ft_atoi(rgb[i]) > 255)
-			return (COLORS_ERROR);
+			return (free_then_exit(d, rgb));
 	if ((i != 3) || (ft_strcmp(d->infos[0], "F") != 0 &&
 			(ft_strcmp(d->infos[0], "C") != 0)))
-	{
-		free_tab(rgb, d->infos[1], ',', 0);
-		return (COLORS_ERROR);
-	}
-	if (ft_strcmp(d->infos[0], "F") == 0)
+		return (free_then_exit(d, rgb));
+	if (ft_strcmp(d->infos[0], "F") == 0 && d->f_color == -1)
 		d->f_color = get_rgb(rgb);
-	else if (ft_strcmp(d->infos[0], "C") == 0)
+	else if (ft_strcmp(d->infos[0], "C") == 0 && d->c_color == -1)
 		d->c_color = get_rgb(rgb);
-	free_tab(rgb, d->infos[1], ',', 0);
-	return (SUCCESS);
-}
-
-static int	check_textures(t_data *d, int words)
-{
-	int	fd;
-
-	if ((d->err = check_file_extension(d->infos[1], ".xpm")) < 0)
-		ft_error(d, EXT_ERROR, "");
 	else
-	{
-		if ((fd = open(d->infos[1], O_RDONLY)) == -1)
-			return (FD_ERROR);
-		close(fd);
-		if (ft_strcmp(d->infos[0], "NO") == 0 && words == 2)
-			d->t[0].addr = get_textures_img(d, 0);
-		else if (ft_strcmp(d->infos[0], "SO") == 0 && words == 2)
-			d->t[1].addr = get_textures_img(d, 1);
-		else if (ft_strcmp(d->infos[0], "WE") == 0 && words == 2)
-			d->t[2].addr = get_textures_img(d, 2);
-		else if (ft_strcmp(d->infos[0], "EA") == 0 && words == 2)
-			d->t[3].addr = get_textures_img(d, 3);
-		else if (ft_strcmp(d->infos[0], "S") == 0 && words == 2)
-			d->t[4].addr = get_textures_img(d, 4);
-		else if (ft_strcmp(d->infos[0], "S1") == 0 && words == 2)
-			d->t[5].addr = get_textures_img(d, 5);
-		else
-			return (TEXTURES_ERROR);
-	}
+		return (free_then_exit(d, rgb));
+	free_tab(rgb, d->infos[1], ',', 0);
 	return (SUCCESS);
 }
 
@@ -111,6 +75,7 @@ void		parse_config(t_data *d)
 {
 	int		words;
 
+	d->init_infos = 1;
 	words = ft_wordcount(d->line, ' ');
 	if (strcmp(d->infos[0], "R") == 0 && words == 3)
 	{

@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 17:28:01 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/08 09:30:23 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/10 21:56:09 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@
 #  define A 97
 #  define S 115
 #  define D 100
+#  define R 114
 #  define UP_ARROW 65362
 #  define DOWN_ARROW 65364
 #  define LEFT_ARROW 65361
