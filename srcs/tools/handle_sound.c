@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 12:53:33 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/11 16:32:22 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/11 16:56:15 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ void	play_sound(char var)
 	if (PLATFORM == 1)
 	{
 		(var == 'E') ? system("afplay ./sound/end.mp3 &") : 0;
-		(var == 'H') ? system("afplay ./sound/hit_short.mp3") : 0;
+		(var == 'H') ? system("afplay ./sound/hit_short.mp3 &") : 0;
 		(var == 'I') ? system("afplay ./sound/itemtaken.mp3 &") : 0;
-		(var == 'A') ? system("afplay ./sound/pouf_short.mp3 ") : 0;
+		(var == 'A') ? system("afplay ./sound/pouf_short.mp3 &") : 0;
 	}
 	else if (PLATFORM == 2)
 	{

@@ -29,6 +29,7 @@ SRC = 	cub3d \
 		config/parse_config \
 		config/process_map \
 		config/check_textures \
+		config/check_screen \
 		raycast/draw_col \
 		raycast/raycasting \
 		raycast/trace_horizontal \
@@ -76,8 +77,7 @@ else
 endif
 endif
 	@echo "\n\033[0;34m Compiling $@..."
-	-@$(CC) $(INC) $(OBJ) -Llibft -lft $(MLX) -o $(NAME) 
-#-fsanitize=address
+	-@$(CC) $(INC) $(OBJ) -Llibft -lft $(MLX) -o $(NAME) -fsanitize=address
 	@echo "\033[0;32m-->[OK] \033[0m"
 	@echo "\033[0;36m\033[0;40mStart program with : ./cub3D [path_map] [--save]\033[0m"
 

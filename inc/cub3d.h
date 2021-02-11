@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 09:14:11 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/11 14:58:45 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/11 17:34:29 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,6 +187,7 @@ int				check_config(t_data *d);
 int				check_file_extension(char *file, char *extension_name);
 int				check_map(t_data *d);
 int				check_textures(t_data *d, int words);
+int				check_screen(t_data *d);
 
 /*
 **sprites

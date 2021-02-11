@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/16 19:27:25 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/11 15:55:34 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/11 17:10:33 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void		ft_init_sprites(t_data *d)
 {
+	if (d->buff)
+		free(d->buff);
 	d->buff = malloc(sizeof(float) * g_w_resolution);
 	if (d->buff == NULL)
 		ft_error(d, MALLOC_ERROR, "");
@@ -28,6 +30,7 @@ void		ft_next_init(t_data *d)
 	i = -1;
 	d->nb_spr = 0;
 	d->sprites = NULL;
+	d->buff = NULL;
 	while (++i <= 7)
 	{
 		d->t[i].img = NULL;
