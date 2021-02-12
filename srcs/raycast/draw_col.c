@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 19:10:13 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/10 17:25:28 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/12 14:41:55 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	put_pixel_text(t_data *d, t_ray *r, t_wall *w)
 void	draw_column(t_ray *r, t_data *d, t_wall *w)
 {
 	w->good_dist = r->distance * cos(r->angle - d->p.r_angle);
-	d->buff[r->i] = r->distance;
+	d->buff[r->i] = w->good_dist;
 	w->h = (g_tile_size / w->good_dist) * w->dist;
 	w->start = (g_h_resolution / 2) - (w->h / 2);
 	if (w->start < 0)

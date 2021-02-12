@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/27 12:36:10 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/08 16:05:14 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/12 14:59:27 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,12 @@ static void	trace_horizontal_next(t_ray *r, t_data *d)
 	{
 		if (is_wall(d->r.ya - r->faceup, d->r.xa, d))
 		{
-			if (r->distance > hypot(d->p.x - r->xa, d->p.y - r->ya))
+			if (r->distance > hypot(r->xa - d->p.x, r->ya - d->p.y))
 			{
 				r->hitx = r->xa;
 				r->hity = r->ya;
 				r->hitvert = 0;
-				r->distance = hypot(d->p.x - r->xa, d->p.y - r->ya);
+				r->distance = hypot(r->xa - d->p.x, r->ya - d->p.y);
 			}
 			return ;
 		}

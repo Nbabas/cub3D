@@ -5,12 +5,12 @@ C        123,123,132
 
 F  132,123,123
 
-NO ./textures/planche1.xpm
+NO ./textures/test/grass.xpm
 
-SO ./textures/planche2.xpm
-EA ./textures/roche1.xpm    
-WE ./textures/red.xpm
-S ./textures/mouton.xpm
+SO ./textures/test/brick.xpm
+EA ./textures/test/metal.xpm    
+WE ./textures/test/stone.xpm
+S ./textures/test/coeur.xpm
 
 1111111111111111111
 1S00000000000020001

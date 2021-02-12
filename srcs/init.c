@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/16 19:27:25 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/12 10:27:26 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/12 14:12:33 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,5 @@ void		ft_init_global(t_data *d)
 	g_n_rows = d->ymax;
 	g_n_col = d->xmax;
 	g_n_rays = g_w_resolution;
-	g_fov_angle = (60 * (M_PI / 180));
+	g_fov_angle = (66 * (M_PI / 180));
 }

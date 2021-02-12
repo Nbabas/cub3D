@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 08:38:29 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/11 14:32:24 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/12 14:59:34 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static void	ft_new_ray(t_ray *r, t_data *d)
 
 float		get_angle(float angle)
 {
-	angle = remainder(angle, (M_PI * 2));
+	angle = (float)remainder(angle, (M_PI * 2));
 	if (angle < 0)
 		angle = (M_PI * 2) + angle;
 	return (angle);
@@ -52,10 +52,10 @@ float		get_angle(float angle)
 static void	draw_img(t_data *d)
 {
 	d->r.i = 0;
-	d->w.dist = (g_w_resolution / 2) / tan(g_fov_angle / 2);
+	d->w.dist = (g_w_resolution / 2) / tanf(g_fov_angle / 2);
 	while (d->r.i < g_n_rays)
 	{
-		d->r.angle = d->p.r_angle + atan((d->r.i - g_n_rays / 2) / d->w.dist);
+		d->r.angle = d->p.r_angle + atanf((d->r.i - g_n_rays / 2) / d->w.dist);
 		d->r.angle = get_angle(d->r.angle);
 		ft_new_ray(&d->r, d);
 		get_orientation_ray(&d->r);
