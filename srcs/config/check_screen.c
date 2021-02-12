@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 17:33:50 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/11 17:44:46 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/12 12:37:08 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,15 @@
 
 static int	free_then_exit(t_data *d, char **tab)
 {
-	d->init_infos = 0;
 	free_tab(tab, d->line, ' ', 0);
 	return (SCREEN_SIZE_ERROR);
 }
 
-static int  next_check_screen(t_data *d)
+static int	next_check_screen(t_data *d)
 {
-    int		maxx;
+	int		maxx;
 	int		maxy;
-    
+
 	if (PLATFORM == 2)
 	{
 		mlx_get_screen_size(g_mlx_ptr, &maxx, &maxy);
@@ -39,17 +38,19 @@ static int  next_check_screen(t_data *d)
 		if (d->w_resolution > SCREEN_MAX_WIDTH)
 			d->w_resolution = SCREEN_MAX_WIDTH - 45;
 	}
-    return (SUCCESS);
+	return (SUCCESS);
 }
 
-int	check_screen(t_data *d)
+int			check_screen(t_data *d)
 {
-    int     i;
+	int		i;
 
-    i = 0;
-    
-    if (d->w_resolution || d->h_resolution)
-        return (free_then_exit(d, d->infos));
+	i = 0;
+	if (d->w_resolution || d->h_resolution)
+	{
+		free_tab(d->infos, d->line, ' ', 0);
+		return (DOUBLE_LINE_ERROR);
+	}
 	while (d->infos[++i])
 		if (!is_number(d->infos[i]))
 			return (free_then_exit(d, d->infos));
@@ -57,6 +58,6 @@ int	check_screen(t_data *d)
 	d->h_resolution = ft_atoi(d->infos[2]);
 	if (d->w_resolution < 200 || d->h_resolution < 200)
 		return (free_then_exit(d, d->infos));
-    next_check_screen(d);
+	next_check_screen(d);
 	return (SUCCESS);
 }

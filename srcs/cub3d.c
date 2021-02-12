@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 09:14:16 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/10 22:57:34 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/12 11:57:58 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static void	create_window(t_data *d)
 void		game(t_data *d, char *pathmap)
 {
 	if ((g_mlx_ptr = mlx_init()) == 0)
-		ft_error(d, MLX_ERROR, "MLX init abort");
+		ft_error(d, MLX_ERROR, "Init abort");
 	g_mini_scale = 0.20;
 	parsing(d, pathmap);
 	check_map(d);
@@ -57,7 +57,6 @@ void		game(t_data *d, char *pathmap)
 	ft_init_global(d);
 	ft_init_player(d);
 	ft_init_sprites(d);
-	get_sprites(d);
 	raycast_process(d);
 	listen_actions(d);
 }
@@ -73,8 +72,8 @@ static void	check_input(t_data *d, int argc, char **argv)
 	}
 	else if (argc != 2)
 		ft_error(d, INPUT_ERROR, "Start : ./cub3D [path_map] [--save]");
-	if ((d->err = check_open_map(argv[1], d)) < 0)
-		ft_error(d, CONFIG_ERROR, argv[1]);
+	if (check_open_map(argv[1], d) < 0)
+		ft_error(d, FD_ERROR, argv[1]);
 }
 
 int			main(int argc, char *argv[])

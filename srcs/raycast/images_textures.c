@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 18:50:36 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/11 15:46:32 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/12 10:58:35 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,17 +43,21 @@ int			*get_textures_img(t_data *d, int id)
 
 	if (d->t[id].img)
 	{
-		d->err = TEXTURES_ERROR;
-		ft_error(d, CONFIG_ERROR, "Double textures");
+		free_tab(d->infos, d->line, ' ', 0);
+		ft_error(d, DOUBLE_LINE_ERROR, d->line);
 	}
 	if (!(d->t[id].img = mlx_xpm_file_to_image(g_mlx_ptr, d->infos[1],
 								&d->t[id].w, &d->t[id].h)))
 	{
 		d->err = TEXTURES_ERROR;
-		ft_error(d, MLX_ERROR, d->infos[1]);
+		free_tab(d->infos, d->line, ' ', 0);
+		ft_error(d, MLX_ERROR, d->line);
 	}
 	ret = (int *)mlx_get_data_addr(d->t[id].img, &tab[0], &tab[1], &tab[2]);
 	if (!ret)
+	{
+		free_tab(d->infos, d->line, ' ', 0);
 		ft_error(d, MLX_ERROR, "Impossible to get img address");
+	}
 	return (ret);
 }

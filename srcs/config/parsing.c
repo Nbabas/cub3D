@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 09:50:19 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/11 15:13:13 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/12 12:37:32 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ static void		parse_file(t_data *d)
 	xtmp = 0;
 	if (line_is_space(d->line) == SUCCESS)
 		return ;
-	if ((d->err = check_config(d)) < 0)
-		ft_error(d, CONFIG_ERROR, "");
 	if ((d->err = get_nb_lines(d->line, d)) < 0)
-		ft_error(d, MAP_ERROR, "");
+		ft_error(d, d->err, d->line);
+	if ((d->err = check_config(d)) < 0)
+		ft_error(d, d->err, "Space in empty line");
 	xtmp = ft_strlen(d->line);
 	if (xtmp > d->xmax)
 		d->xmax = xtmp;
@@ -58,9 +58,9 @@ void			parsing(t_data *d, char *file)
 {
 	static int	ret;
 
-	d->line = 0;
 	ret = 1;
 	d->currenty = 0;
+	d->init_infos = 0;
 	while (ret != 0)
 	{
 		ret = get_next_line(d->fd, &(d->line));

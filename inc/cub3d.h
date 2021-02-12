@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 09:14:11 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/11 17:34:29 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/12 12:34:31 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,15 @@
 # define COLORS_ERROR -6
 # define EXT_ERROR -7
 # define CONFIG_ERROR -8
-# define MISS_ARG_ERROR -11
 # define WRONG_SIGN -9
 # define MALLOC_ERROR -10
-# define MLX_ERROR -11
+# define MISS_ARG_ERROR -11
 # define INPUT_ERROR -12
 # define BMP_ERROR -13
+# define DOUBLE_LINE_ERROR -14
+# define KEY_UNDEF -15
+# define MLX_ERROR -16
+# define MISS_TEXTURES_ERROR -17
 
 # define SUCCESS 1
 
@@ -242,6 +245,4 @@ void			check_strings(t_data *d);
 void			play_sound(char var);
 void			draw_life(t_data *d);
 void			draw_weapon(t_data *d);
-
-
 #endif

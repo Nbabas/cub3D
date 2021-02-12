@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 22:04:23 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/11 14:25:53 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/12 12:37:22 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,10 @@ static int	next_check(t_data *d, int words)
 	else if (ft_strcmp(d->infos[0], "W") == 0 && words == 2)
 		d->t[7].addr = get_textures_img(d, 7);
 	else
-		return (TEXTURES_ERROR);
+	{
+		free_tab(d->infos, d->line, ' ', 0);
+		return (KEY_UNDEF);
+	}
 	return (SUCCESS);
 }
 
@@ -40,11 +43,17 @@ int			check_textures(t_data *d, int words)
 	int		fd;
 
 	if ((d->err = check_file_extension(d->infos[1], ".xpm")) < 0)
-		ft_error(d, EXT_ERROR, "");
+	{
+		free_tab(d->infos, d->line, ' ', 0);
+		ft_error(d, d->err, "");
+	}
 	else
 	{
 		if ((fd = open(d->infos[1], O_RDONLY)) == -1)
+		{
+			free_tab(d->infos, d->line, ' ', 0);
 			return (FD_ERROR);
+		}
 		close(fd);
 	}
 	return (next_check(d, words));

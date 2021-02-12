@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 14:25:43 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/11 13:15:12 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/12 11:57:30 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,7 @@ void	new_sprite(t_data *d, int i, int x, int y)
 	d->sprites[i].h = d->t[d->sprites[i].type + 2].h;
 	d->sprites[i].w = d->t[d->sprites[i].type + 2].w;
 	if (d->t[d->sprites[i].type + 2].img == NULL)
-	{
-		d->err = TEXTURES_ERROR;
-		ft_error(d, CONFIG_ERROR, "Sprites Texture Missing");
-	}
+		ft_error(d, MISS_TEXTURES_ERROR, "");
 }
 
 void	draw_textures_sprite(t_spr *spr, int x, int y, t_data *d)

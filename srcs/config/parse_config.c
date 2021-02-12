@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 16:57:59 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/11 17:47:15 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/12 12:37:40 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,17 +50,16 @@ void		parse_config(t_data *d)
 {
 	int		words;
 
-	d->init_infos = 1;
 	words = ft_wordcount(d->line, ' ');
 	if (strcmp(d->infos[0], "R") == 0 && words == 3)
 	{
 		if ((d->err = check_screen(d)) < 0)
-			ft_error(d, CONFIG_ERROR, " >200x200 minimum Only Digits<");
+			ft_error(d, d->err, "Screen resolution");
 	}
 	else if (ft_strchr("NSEW", d->infos[0][0]) && words == 2)
 	{
 		if ((d->err = check_textures(d, words)) < 0)
-			ft_error(d, CONFIG_ERROR, d->infos[1]);
+			ft_error(d, d->err, d->line);
 	}
 	else if (ft_strchr("CF", d->infos[0][0]) && words == 2)
 	{
@@ -69,8 +68,8 @@ void		parse_config(t_data *d)
 	}
 	else
 	{
-		d->err = CONFIG_ERROR;
-		ft_error(d, CONFIG_ERROR, d->infos[0]);
+		free_tab(d->infos, d->line, ' ', 0);
+		ft_error(d, CONFIG_ERROR, d->line);
 	}
 	free_tab(d->infos, d->line, ' ', 0);
 }

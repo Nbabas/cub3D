@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 00:07:36 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/11 15:42:08 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/12 11:47:58 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,11 @@ int		line_is_map(char *line)
 void	process_map(t_data *d, char *file)
 {
 	static int	ret = 1;
-	char		*nl;
 
-	nl = 0;
+	d->line = 0;
 	d->init_infos = 1;
 	if (d->xmax == 0 || d->ymax == 0)
-		ft_error(d, MAP_ERROR, "");
+		ft_error(d, MAP_ERROR, "No map");
 	if ((d->fd = open(file, O_RDONLY)) < 0)
 		ft_error(d, FD_ERROR, "");
 	d->map = malloc(sizeof(char *) * d->ymax + 1);
@@ -81,13 +80,15 @@ void	process_map(t_data *d, char *file)
 		ft_error(d, MALLOC_ERROR, "");
 	while (ret != 0)
 	{
-		ret = get_next_line(d->fd, &nl);
-		if (line_is_map(nl) == 1)
-			put_map_in_tab(d, nl);
-		if (line_is_space(nl) == SUCCESS &&
+		d->init_infos = 0;
+		ret = get_next_line(d->fd, &d->line);
+		if (line_is_map(d->line) == 1)
+			put_map_in_tab(d, d->line);
+		if (line_is_space(d->line) == SUCCESS &&
 			d->currenty > 0 && d->currenty != d->ymax)
 			ft_error(d, MAP_ERROR, "Empty line in map");
-		ft_free(nl);
+		ft_free(d->line);
 	}
 	close(d->fd);
+	d->init_infos = 1;
 }

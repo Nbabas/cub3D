@@ -6,7 +6,7 @@
 /*   By: nbascaul <nbascaul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 11:38:07 by nbascaul          #+#    #+#             */
-/*   Updated: 2021/02/11 17:19:29 by nbascaul         ###   ########.fr       */
+/*   Updated: 2021/02/12 12:18:29 by nbascaul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,13 +66,7 @@ void		free_all(t_data *d)
 		free(d->buff);
 	if (d->sprites)
 		free(d->sprites);
-	if (d->err < 0 && d->line && check_config(d) < 0)
-	{
-		if (d->init_infos)
-			free_tab(d->infos, d->line, ' ', 0);
-		ft_free(d->line);
-	}
-	else if (d->err < 0 && d->init_infos == 0)
+	if (d->init_infos == 0)
 		ft_free(d->line);
 	next_free_all(d);
 }
